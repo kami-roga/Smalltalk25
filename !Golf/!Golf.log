@@ -1,0 +1,78 @@
+﻿Binding to vslb31...
+Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Golf" ...
+   Filing out class headers belonging to Golf ...
+      GolfPlayer
+      GolfTeam
+      GolfTournament
+   Filing out GolfPlayer class>>fromString:
+   Filing out GolfPlayer class>>includeClass
+   Filing out GolfPlayer>>fromString:
+   Filing out GolfPlayer>>grossScores
+   Filing out GolfPlayer>>grossScores:
+   Filing out GolfPlayer>>handicap
+   Filing out GolfPlayer>>handicap:
+   Filing out GolfPlayer>>handicapStrokes
+   Filing out GolfPlayer>>handicapStrokes:
+   Filing out GolfPlayer>>initializeWith:
+   Filing out GolfPlayer>>name
+   Filing out GolfPlayer>>name:
+   Filing out GolfPlayer>>netScoreForHole:
+   Filing out GolfTeam class>>computeTeamNetScore
+   Filing out GolfTeam class>>includeClass
+   Filing out GolfTeam>>addPlayers:
+   Filing out GolfTeam>>finalScore
+   Filing out GolfTeam>>player1
+   Filing out GolfTeam>>player1:
+   Filing out GolfTeam>>player2
+   Filing out GolfTeam>>player2:
+   Filing out GolfTeam>>playersNames
+   Filing out GolfTeam>>teamGrossScore
+   Filing out GolfTeam>>teamNetScore
+   Filing out GolfTeam>>teamWith:and:
+   Filing out GolfTournament class>>fromString:
+   Filing out GolfTournament class>>includeClass
+   Filing out GolfTournament>>course
+   Filing out GolfTournament>>course:
+   Filing out GolfTournament>>createPlayerFrom:
+   Filing out GolfTournament>>createPlayersFrom:
+   Filing out GolfTournament>>createSecondPlayerFrom:
+   Filing out GolfTournament>>handicapStrokes
+   Filing out GolfTournament>>handicapStrokes:
+   Filing out GolfTournament>>processBack9Strokes:
+   Filing out GolfTournament>>processFront9Strokes:
+   Filing out GolfTournament>>readingTheFile
+   Filing out GolfTournament>>teams
+   Filing out GolfTournament>>teams:
+   Filing out GolfTournament>>tournament
+   Filing out GolfTournament>>tournament:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   imported: AssocExternal ( 'Transcript' ) ...
+   adding GolfPlayer ...
+   adding GolfTournament ...
+   adding GolfTeam ...
+Writing file: C:\LabWare-8\SOURCE\!Golf.sll ...
+.........   object space written, 143 objects, 6781 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

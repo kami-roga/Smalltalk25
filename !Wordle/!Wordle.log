@@ -1,0 +1,41 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Wordle" ...
+   Filing out class headers belonging to Wordle ...
+      Wordle
+   Filing out Wordle class>>includeClass
+   Filing out Wordle>>allWords
+   Filing out Wordle>>colorForGuess:against:
+   Filing out Wordle>>guesses
+   Filing out Wordle>>guesses:
+   Filing out Wordle>>history
+   Filing out Wordle>>history:
+   Filing out Wordle>>suggestGuessFrom:
+   Filing out Wordle>>validWordsFrom:fitsClueHistory:
+   Filing out Wordle>>word:fitsClueHistory:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   adding Wordle ...
+Writing file: C:\LabWare-8\SOURCE\!Wordle.sll ...
+.......   object space written, 56 objects, 2317 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

@@ -1,0 +1,71 @@
+﻿Binding to vslb31...
+Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Button" ...
+   Filing out class headers belonging to Button ...
+      ButtonTest
+   Filing out ButtonTest class>>includeClass
+   Filing out ButtonTest class>>wbBasicVersion
+   Filing out ButtonTest>>button1Clicked
+   Filing out ButtonTest>>button2Clicked
+   Filing out ButtonTest>>button3Clicked
+   Filing out ButtonTest>>button4Clicked
+   Filing out ButtonTest>>button5Clicked
+   Filing out ButtonTest>>createViews
+   Filing out ButtonTest>>listPanes
+   Filing out ButtonTest>>listPanes:
+   Filing out ButtonTest>>moveLeft
+   Filing out ButtonTest>>moveLeftToTop
+   Filing out ButtonTest>>moveList:to:bottom:
+   Filing out ButtonTest>>moveList1To2Bottom
+   Filing out ButtonTest>>moveList1To2Top
+   Filing out ButtonTest>>moveList2Bottom1
+   Filing out ButtonTest>>moveList2To3Bottom
+   Filing out ButtonTest>>moveList2To3Top
+   Filing out ButtonTest>>moveList2Top1
+   Filing out ButtonTest>>moveList2Top3
+   Filing out ButtonTest>>moveList2ToTop3
+   Filing out ButtonTest>>moveList3To2Bottom
+   Filing out ButtonTest>>moveList3To2Top
+   Filing out ButtonTest>>moveRight
+   Filing out ButtonTest>>moveRightToTop
+   Filing out ButtonTest>>runToEntryList1:
+   Filing out ButtonTest>>runToEntryList2:
+   Filing out ButtonTest>>runToEntryList3:
+   Filing out ButtonTest>>views
+   Filing out ButtonTest>>views:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   adding ButtonTest ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'Button' ) ...
+   imported: AssocExternal ( 'EntryField' ) ...
+   imported: AssocExternal ( 'ListBox' ) ...
+   imported: AssocExternal ( 'Font' ) ...
+   imported: AssocExternal ( 'Color' ) ...
+   imported: AssocExternal ( 'LayoutFrame' ) ...
+   imported: AssocExternal ( 'Menu' ) ...
+Writing file: C:\LabWare-8\SOURCE\!Button.sll ...
+..........   object space written, 167 objects, 8385 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

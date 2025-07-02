@@ -1,0 +1,93 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Lottery" ...
+   Filing out class headers belonging to Lottery ...
+      Lottery
+      LotteryPlay
+      LotteryPrize
+      MegaMillions
+      Powerball
+      LotteryReader
+      LotteryResult
+      LotteryTicket
+   Filing out Lottery class>>includeClass
+   Filing out Lottery class>>prizeClass
+   Filing out Lottery class>>prizeClass:
+   Filing out Lottery>>beMegamillions
+   Filing out Lottery>>bePowerball
+   Filing out Lottery>>loadTickets
+   Filing out Lottery>>netProfitForGame:
+   Filing out Lottery>>showWinnings
+   Filing out Lottery>>tickets
+   Filing out Lottery>>tickets:
+   Filing out Lottery>>totalWinnings:
+   Filing out LotteryPlay class>>from:
+   Filing out LotteryPlay class>>fromArray:
+   Filing out LotteryPlay class>>includeClass
+   Filing out LotteryPlay>>bonus
+   Filing out LotteryPlay>>bonus:
+   Filing out LotteryPlay>>match5
+   Filing out LotteryPlay>>match5:
+   Filing out LotteryPlay>>matchAgainst:bonus:
+   Filing out LotteryPlay>>valueWithWinningPlay:
+   Filing out LotteryPrize class>>includeClass
+   Filing out LotteryPrize>>categoryToPrize:
+   Filing out LotteryReader class>>includeClass
+   Filing out LotteryReader>>allTickets
+   Filing out LotteryResult class>>includeClass
+   Filing out LotteryResult>>assignPrizeFrom:
+   Filing out LotteryResult>>bonusCount
+   Filing out LotteryResult>>bonusCount:
+   Filing out LotteryResult>>category
+   Filing out LotteryResult>>category:
+   Filing out LotteryResult>>matchedCount
+   Filing out LotteryResult>>matchedCount:
+   Filing out LotteryResult>>prizeAmount
+   Filing out LotteryResult>>prizeAmount:
+   Filing out LotteryTicket class>>from:number:
+   Filing out LotteryTicket class>>includeClass
+   Filing out LotteryTicket>>id
+   Filing out LotteryTicket>>id:
+   Filing out LotteryTicket>>plays
+   Filing out LotteryTicket>>plays:
+   Filing out LotteryTicket>>totalGamePrize:
+   Filing out LotteryTicket>>valueWithGame:
+   Filing out MegaMillions class>>includeClass
+   Filing out MegaMillions>>categoryToPrizeAt:
+   Filing out MegaMillions>>prizeDict
+   Filing out Powerball class>>includeClass
+   Filing out Powerball>>categoryToPrizeAt:
+   Filing out Powerball>>prizeDict
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   adding LotteryResult ...
+   adding Powerball ...
+   adding LotteryPlay ...
+   adding MegaMillions ...
+   adding LotteryTicket ...
+   adding LotteryReader ...
+   adding Lottery ...
+   adding LotteryPrize ...
+Writing file: C:\LabWare-8\SOURCE\!Lottery.sll ...
+...........   object space written, 211 objects, 9493 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

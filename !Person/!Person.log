@@ -1,0 +1,114 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Person" ...
+   Filing out class headers belonging to Person ...
+      Person
+      PersonDatabase
+      PersonUI
+      PersonEditDialog
+   Filing out Person class>>fromString:
+   Filing out Person class>>includeClass
+   Filing out Person>>asText
+   Filing out Person>>children
+   Filing out Person>>children:
+   Filing out Person>>color
+   Filing out Person>>dateOfBirth
+   Filing out Person>>dateOfBirth:
+   Filing out Person>>id
+   Filing out Person>>id:
+   Filing out Person>>name
+   Filing out Person>>name:
+   Filing out Person>>printOn:
+   Filing out Person>>stringChildren
+   Filing out PersonDatabase class>>add:
+   Filing out PersonDatabase class>>includeClass
+   Filing out PersonDatabase class>>people
+   Filing out PersonDatabase>>ageDifference
+   Filing out PersonDatabase>>allPersons
+   Filing out PersonDatabase>>dateToString
+   Filing out PersonDatabase>>leastChildren
+   Filing out PersonDatabase>>mostChildren
+   Filing out PersonDatabase>>objectsToFile
+   Filing out PersonDatabase>>oldestPerson
+   Filing out PersonDatabase>>people
+   Filing out PersonDatabase>>peopleByAge
+   Filing out PersonDatabase>>peopleByNumberOfChildren
+   Filing out PersonDatabase>>personObjectsToFile
+   Filing out PersonDatabase>>save:
+   Filing out PersonDatabase>>youngestPerson
+   Filing out PersonEditDialog class>>includeClass
+   Filing out PersonEditDialog class>>wbBasicVersion
+   Filing out PersonEditDialog>>addChild
+   Filing out PersonEditDialog>>cancelButton
+   Filing out PersonEditDialog>>cancelButtonClicked
+   Filing out PersonEditDialog>>createViews
+   Filing out PersonEditDialog>>deleteChild
+   Filing out PersonEditDialog>>editButton
+   Filing out PersonEditDialog>>editChild
+   Filing out PersonEditDialog>>initWindow
+   Filing out PersonEditDialog>>openOn:
+   Filing out PersonEditDialog>>person
+   Filing out PersonEditDialog>>person:
+   Filing out PersonEditDialog>>saveButtonClicked
+   Filing out PersonEditDialog>>saved
+   Filing out PersonEditDialog>>saved:
+   Filing out PersonEditDialog>>views
+   Filing out PersonEditDialog>>views:
+   Filing out PersonEditDialog>>wasSaved
+   Filing out PersonUI class>>includeClass
+   Filing out PersonUI class>>wbBasicVersion
+   Filing out PersonUI>>addPerson
+   Filing out PersonUI>>addPersonToListBox:
+   Filing out PersonUI>>cancelButtonClicked
+   Filing out PersonUI>>createViews
+   Filing out PersonUI>>deletePerson
+   Filing out PersonUI>>editPerson
+   Filing out PersonUI>>initWindow
+   Filing out PersonUI>>saveButtonClicked
+   Filing out PersonUI>>savedMessageBox
+   Filing out PersonUI>>warningMessage
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   adding PersonDatabase ...
+   imported: AssocExternal ( 'Color' ) ...
+   adding Person ...
+   imported: AssocExternal ( 'TextPromptDialog' ) ...
+   imported: AssocExternal ( 'CalendarDialog' ) ...
+   adding PersonEditDialog ...
+   imported: GlobalExternal ( 'WindowDialog' ) ...
+   imported: AssocExternal ( 'MessageBox' ) ...
+   imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'Button' ) ...
+   imported: AssocExternal ( 'EntryField' ) ...
+   imported: AssocExternal ( 'CPColumnarListBox' ) ...
+   imported: AssocExternal ( 'Font' ) ...
+   imported: AssocExternal ( 'LayoutFrame' ) ...
+   imported: AssocExternal ( 'Menu' ) ...
+   imported: AssocExternal ( 'CPCLBField' ) ...
+   imported: AssocExternal ( 'Transcript' ) ...
+   adding PersonUI ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   imported: AssocExternal ( 'ListBox' ) ...
+Writing file: C:\LabWare-8\SOURCE\!Person.sll ...
+..............   object space written, 290 objects, 14973 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

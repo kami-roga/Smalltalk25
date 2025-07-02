@@ -1,0 +1,242 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Nfl" ...
+   Filing out class headers belonging to Nfl ...
+      NFLBoxPoolAnalyzer
+      NFLBoxPoolGrid
+      NFLBoxPoolGridRow
+      NFLDatabase
+      NFLGame
+      NFLTeamInGame
+      NFLBoxPoolUI
+      NFLUI
+      NFLFilterDialog
+      NFLUIComposite2
+   Filing out NFLBoxPoolAnalyzer class>>includeClass
+   Filing out NFLBoxPoolAnalyzer>>analyzeGames:
+   Filing out NFLBoxPoolGrid class>>includeClass
+   Filing out NFLBoxPoolGrid>>finalCountAndPercentage
+   Filing out NFLBoxPoolGrid>>incrementCountForPair:
+   Filing out NFLBoxPoolGrid>>rows
+   Filing out NFLBoxPoolGrid>>rows:
+   Filing out NFLBoxPoolGrid>>sortedRowsByPercentage
+   Filing out NFLBoxPoolGrid>>totalGames
+   Filing out NFLBoxPoolGrid>>totalGames:
+   Filing out NFLBoxPoolGridRow class>>includeClass
+   Filing out NFLBoxPoolGridRow>>count
+   Filing out NFLBoxPoolGridRow>>count:
+   Filing out NFLBoxPoolGridRow>>digits
+   Filing out NFLBoxPoolGridRow>>digits:
+   Filing out NFLBoxPoolGridRow>>percentage
+   Filing out NFLBoxPoolGridRow>>percentage:
+   Filing out NFLBoxPoolGridRow>>rowNumber
+   Filing out NFLBoxPoolGridRow>>rowNumber:
+   Filing out NFLBoxPoolUI class>>includeClass
+   Filing out NFLBoxPoolUI class>>wbBasicVersion
+   Filing out NFLBoxPoolUI>>allGrid
+   Filing out NFLBoxPoolUI>>allGrid:
+   Filing out NFLBoxPoolUI>>allRows
+   Filing out NFLBoxPoolUI>>allRows:
+   Filing out NFLBoxPoolUI>>analyzer
+   Filing out NFLBoxPoolUI>>analyzer:
+   Filing out NFLBoxPoolUI>>createViews
+   Filing out NFLBoxPoolUI>>db
+   Filing out NFLBoxPoolUI>>db:
+   Filing out NFLBoxPoolUI>>games
+   Filing out NFLBoxPoolUI>>games:
+   Filing out NFLBoxPoolUI>>gridListSelectionChanged:
+   Filing out NFLBoxPoolUI>>initWindow
+   Filing out NFLBoxPoolUI>>populateAllGridAndRows
+   Filing out NFLBoxPoolUI>>populateGridList
+   Filing out NFLBoxPoolUI>>populateWonGridAndRows
+   Filing out NFLBoxPoolUI>>views
+   Filing out NFLBoxPoolUI>>views:
+   Filing out NFLBoxPoolUI>>wonGrid
+   Filing out NFLBoxPoolUI>>wonGrid:
+   Filing out NFLBoxPoolUI>>wonRows
+   Filing out NFLBoxPoolUI>>wonRows:
+   Filing out NFLDatabase class>>add:
+   Filing out NFLDatabase class>>includeClass
+   Filing out NFLDatabase>>allGames
+   Filing out NFLDatabase>>games
+   Filing out NFLDatabase>>games:
+   Filing out NFLDatabase>>teams
+   Filing out NFLDatabase>>teams:
+   Filing out NFLFilterDialog class>>includeClass
+   Filing out NFLFilterDialog class>>wbBasicVersion
+   Filing out NFLFilterDialog>>createViews
+   Filing out NFLGame class>>fromString:id:
+   Filing out NFLGame class>>includeClass
+   Filing out NFLGame>>atsWinner
+   Filing out NFLGame>>date
+   Filing out NFLGame>>date:
+   Filing out NFLGame>>dayOfWeek
+   Filing out NFLGame>>gameType
+   Filing out NFLGame>>gameType:
+   Filing out NFLGame>>homeTeam
+   Filing out NFLGame>>homeTeam:
+   Filing out NFLGame>>homeTeamWasFavorite
+   Filing out NFLGame>>homeTeamWasFavorite:
+   Filing out NFLGame>>id
+   Filing out NFLGame>>id:
+   Filing out NFLGame>>isConferenceChampionship
+   Filing out NFLGame>>isDivisionPlayoff
+   Filing out NFLGame>>isPlayoff
+   Filing out NFLGame>>isRegularSeason
+   Filing out NFLGame>>isSuperbowl
+   Filing out NFLGame>>isWildCard
+   Filing out NFLGame>>lastDigitOfScore
+   Filing out NFLGame>>marginOfVictory
+   Filing out NFLGame>>overtime
+   Filing out NFLGame>>overtime:
+   Filing out NFLGame>>overUnder
+   Filing out NFLGame>>overUnder:
+   Filing out NFLGame>>overUnderResult
+   Filing out NFLGame>>roof
+   Filing out NFLGame>>roof:
+   Filing out NFLGame>>season
+   Filing out NFLGame>>season:
+   Filing out NFLGame>>startTime
+   Filing out NFLGame>>startTime:
+   Filing out NFLGame>>summary
+   Filing out NFLGame>>surface
+   Filing out NFLGame>>surface:
+   Filing out NFLGame>>temperature
+   Filing out NFLGame>>temperature:
+   Filing out NFLGame>>totalPoints
+   Filing out NFLGame>>vegasFavorite
+   Filing out NFLGame>>vegasLine
+   Filing out NFLGame>>vegasLine:
+   Filing out NFLGame>>vegasUnderdog
+   Filing out NFLGame>>venue
+   Filing out NFLGame>>venue:
+   Filing out NFLGame>>visitorTeam
+   Filing out NFLGame>>visitorTeam:
+   Filing out NFLGame>>week
+   Filing out NFLGame>>week:
+   Filing out NFLGame>>winner
+   Filing out NFLTeamInGame class>>fromFields:
+   Filing out NFLTeamInGame class>>includeClass
+   Filing out NFLTeamInGame class>>winnerBetween:and:
+   Filing out NFLTeamInGame>>coach
+   Filing out NFLTeamInGame>>coach:
+   Filing out NFLTeamInGame>>conferenceDivision
+   Filing out NFLTeamInGame>>conferenceDivision:
+   Filing out NFLTeamInGame>>isWinner:
+   Filing out NFLTeamInGame>>overtime
+   Filing out NFLTeamInGame>>overtime:
+   Filing out NFLTeamInGame>>q1
+   Filing out NFLTeamInGame>>q1:
+   Filing out NFLTeamInGame>>q2
+   Filing out NFLTeamInGame>>q2:
+   Filing out NFLTeamInGame>>q3
+   Filing out NFLTeamInGame>>q3:
+   Filing out NFLTeamInGame>>q4
+   Filing out NFLTeamInGame>>q4:
+   Filing out NFLTeamInGame>>teamName
+   Filing out NFLTeamInGame>>teamName:
+   Filing out NFLTeamInGame>>teamSummary
+   Filing out NFLTeamInGame>>totalPoints
+   Filing out NFLUI class>>includeClass
+   Filing out NFLUI class>>wbBasicVersion
+   Filing out NFLUI>>composite
+   Filing out NFLUI>>createMenus:
+   Filing out NFLUI>>createViews
+   Filing out NFLUI>>db
+   Filing out NFLUI>>db:
+   Filing out NFLUI>>filteredGamesForMenuSelection
+   Filing out NFLUI>>games
+   Filing out NFLUI>>games:
+   Filing out NFLUI>>initWindow
+   Filing out NFLUI>>lastFilterString
+   Filing out NFLUI>>lastFilterString:
+   Filing out NFLUI>>menuSelection
+   Filing out NFLUI>>menuSelection:
+   Filing out NFLUI>>open
+   Filing out NFLUI>>populateGamesList
+   Filing out NFLUI>>selectAll
+   Filing out NFLUI>>selectConferenceChampionship
+   Filing out NFLUI>>selectDivision
+   Filing out NFLUI>>selectedItem
+   Filing out NFLUI>>selectFilter
+   Filing out NFLUI>>selectPlayoffs
+   Filing out NFLUI>>selectRegularSeason
+   Filing out NFLUI>>selectSuperbowl
+   Filing out NFLUI>>selectWildCard
+   Filing out NFLUI>>updateGameDetailsOnSelection
+   Filing out NFLUI>>updateGamesListOnMenuSelection
+   Filing out NFLUI>>views
+   Filing out NFLUI>>views:
+   Filing out NFLUIComposite2 class>>includeClass
+   Filing out NFLUIComposite2 class>>wbBasicVersion
+   Filing out NFLUIComposite2>>addSubpanes
+   Filing out NFLUIComposite2>>clearGameDetailsFields
+   Filing out NFLUIComposite2>>displayCoachesFrom:
+   Filing out NFLUIComposite2>>displayConferenceDivisionFrom:
+   Filing out NFLUIComposite2>>displayFinalScoresFrom:
+   Filing out NFLUIComposite2>>displayGameDetails:
+   Filing out NFLUIComposite2>>displayHalftimeScoresFrom:
+   Filing out NFLUIComposite2>>displayOvertimeScoresFrom:
+   Filing out NFLUIComposite2>>displayQuarterScoresFrom:
+   Filing out NFLUIComposite2>>displayTeamNamesFrom:
+   Filing out NFLUIComposite2>>initWindow
+   Filing out NFLUIComposite2>>selectedGame:
+   Filing out NFLUIComposite2>>updateATSCheckForGame:
+   Filing out NFLUIComposite2>>updateLineFieldsForGame:
+   Filing out NFLUIComposite2>>updateOUCheckForGame:
+   Filing out NFLUIComposite2>>updateWinCheckForGame:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'CPColumnarListBox' ) ...
+   imported: AssocExternal ( 'Font' ) ...
+   imported: AssocExternal ( 'Color' ) ...
+   imported: AssocExternal ( 'LayoutFrame' ) ...
+   imported: AssocExternal ( 'CPCLBField' ) ...
+   adding NFLBoxPoolUI ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   imported: AssocExternal ( 'Menu' ) ...
+   adding NFLGame ...
+   adding NFLFilterDialog ...
+   imported: GlobalExternal ( 'WindowDialog' ) ...
+   adding NFLUIComposite2 ...
+   imported: GlobalExternal ( 'CompositePane' ) ...
+   adding NFLTeamInGame ...
+   adding NFLBoxPoolGridRow ...
+   imported: AssocExternal ( 'CheckBox' ) ...
+   imported: AssocExternal ( 'EntryField' ) ...
+   imported: AssocExternal ( 'EnhancedEntryField' ) ...
+   imported: AssocExternal ( 'StaticText' ) ...
+   imported: AssocExternal ( 'ListBox' ) ...
+   adding NFLUI ...
+   adding NFLDatabase ...
+   imported: AssocExternal ( 'TextPromptDialog' ) ...
+   imported: AssocExternal ( 'MessageBox' ) ...
+   imported: AssocExternal ( 'CompilerInterface' ) ...
+   adding NFLBoxPoolGrid ...
+   imported: AssocExternal ( 'DropDownList' ) ...
+   imported: AssocExternal ( 'RGBColor' ) ...
+   adding NFLBoxPoolAnalyzer ...
+Writing file: C:\LabWare-8\SOURCE\!Nfl.sll ...
+.......................   object space written, 748 objects, 39877 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

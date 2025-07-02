@@ -1,0 +1,132 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Radio" ...
+   Filing out class headers belonging to Radio ...
+      Radio
+      RadioDatabase
+      RadioUI
+      RadioEditDialog
+   Filing out Radio class>>fromString:
+   Filing out Radio class>>includeClass
+   Filing out Radio>>asText
+   Filing out Radio>>callSign
+   Filing out Radio>>callSign:
+   Filing out Radio>>city
+   Filing out Radio>>city:
+   Filing out Radio>>colorDayPower
+   Filing out Radio>>criticalPower
+   Filing out Radio>>criticalPower:
+   Filing out Radio>>dayPower
+   Filing out Radio>>dayPower:
+   Filing out Radio>>disableStation
+   Filing out Radio>>frequency
+   Filing out Radio>>frequency:
+   Filing out Radio>>latitude
+   Filing out Radio>>latitude:
+   Filing out Radio>>longitude
+   Filing out Radio>>longitude:
+   Filing out Radio>>nightPower
+   Filing out Radio>>nightPower:
+   Filing out Radio>>state
+   Filing out Radio>>state:
+   Filing out Radio>>status
+   Filing out Radio>>status:
+   Filing out RadioDatabase class>>add:
+   Filing out RadioDatabase class>>includeClass
+   Filing out RadioDatabase>>allStations
+   Filing out RadioDatabase>>alphaCities
+   Filing out RadioDatabase>>alphaStates
+   Filing out RadioDatabase>>cities
+   Filing out RadioDatabase>>cities:
+   Filing out RadioDatabase>>citiesByState:
+   Filing out RadioDatabase>>statesByCity:
+   Filing out RadioDatabase>>stations
+   Filing out RadioDatabase>>stations:
+   Filing out RadioDatabase>>stationsInState:
+   Filing out RadioEditDialog class>>includeClass
+   Filing out RadioEditDialog class>>wbBasicVersion
+   Filing out RadioEditDialog>>cancelButtonClicked
+   Filing out RadioEditDialog>>createViews
+   Filing out RadioEditDialog>>initWindow
+   Filing out RadioEditDialog>>openOn:
+   Filing out RadioEditDialog>>populateFields
+   Filing out RadioEditDialog>>saveButtonClicked
+   Filing out RadioEditDialog>>station
+   Filing out RadioEditDialog>>station:
+   Filing out RadioEditDialog>>views
+   Filing out RadioEditDialog>>views:
+   Filing out RadioUI class>>includeClass
+   Filing out RadioUI class>>wbBasicVersion
+   Filing out RadioUI>>checkPower
+   Filing out RadioUI>>cityChanged:
+   Filing out RadioUI>>createViews
+   Filing out RadioUI>>dayChecked
+   Filing out RadioUI>>dayPowerMaxValue
+   Filing out RadioUI>>dayPowerMinValue
+   Filing out RadioUI>>db
+   Filing out RadioUI>>db:
+   Filing out RadioUI>>displayAllStations
+   Filing out RadioUI>>distanceBetween:and:
+   Filing out RadioUI>>doAllFiltering
+   Filing out RadioUI>>editStation
+   Filing out RadioUI>>filterByCity:
+   Filing out RadioUI>>filterByDayPower:
+   Filing out RadioUI>>filterByNightPower:
+   Filing out RadioUI>>filterByState:
+   Filing out RadioUI>>initWindow
+   Filing out RadioUI>>nightChecked
+   Filing out RadioUI>>nightPowerMaxValue
+   Filing out RadioUI>>nightPowerMinValue
+   Filing out RadioUI>>noFilterApplied
+   Filing out RadioUI>>powerValueEdited:
+   Filing out RadioUI>>stateChanged:
+   Filing out RadioUI>>stations
+   Filing out RadioUI>>stations:
+   Filing out RadioUI>>stationStringToInteger:
+   Filing out RadioUI>>views
+   Filing out RadioUI>>views:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'DropDownList' ) ...
+   imported: AssocExternal ( 'CheckBox' ) ...
+   imported: AssocExternal ( 'EntryField' ) ...
+   imported: AssocExternal ( 'StaticText' ) ...
+   imported: AssocExternal ( 'CPColumnarListBox' ) ...
+   imported: AssocExternal ( 'Font' ) ...
+   imported: AssocExternal ( 'Color' ) ...
+   imported: AssocExternal ( 'LayoutFrame' ) ...
+   imported: AssocExternal ( 'Menu' ) ...
+   imported: AssocExternal ( 'CPCLBField' ) ...
+   imported: AssocExternal ( 'Button' ) ...
+   imported: AssocExternal ( 'EnhancedEntryField' ) ...
+   adding RadioUI ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   adding Radio ...
+   adding RadioDatabase ...
+   imported: AssocExternal ( 'Transcript' ) ...
+   adding RadioEditDialog ...
+   imported: GlobalExternal ( 'WindowDialog' ) ...
+Writing file: C:\LabWare-8\SOURCE\!Radio.sll ...
+...............   object space written, 381 objects, 21997 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+

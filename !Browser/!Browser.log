@@ -1,0 +1,101 @@
+﻿Collecting SLL Objects...
+
+Warning! Some methods do not have header comments.
+
+Filing out Module "Browser" ...
+   Filing out class headers belonging to Browser ...
+      BrowserListObject
+      BrowserListUI
+      BrowserListEditDialog
+   Filing out BrowserListEditDialog class>>includeClass
+   Filing out BrowserListEditDialog class>>wbBasicVersion
+   Filing out BrowserListEditDialog>>chosenColor
+   Filing out BrowserListEditDialog>>colorCombos
+   Filing out BrowserListEditDialog>>colorCombos:
+   Filing out BrowserListEditDialog>>createViews
+   Filing out BrowserListEditDialog>>initWindow
+   Filing out BrowserListEditDialog>>openOn:
+   Filing out BrowserListEditDialog>>populateColorCombosList:
+   Filing out BrowserListEditDialog>>selectedItem
+   Filing out BrowserListEditDialog>>views
+   Filing out BrowserListEditDialog>>views:
+   Filing out BrowserListObject class>>includeClass
+   Filing out BrowserListObject class>>on:
+   Filing out BrowserListObject>>close
+   Filing out BrowserListObject>>isMaximized
+   Filing out BrowserListObject>>isMinimized
+   Filing out BrowserListObject>>maximize
+   Filing out BrowserListObject>>minChar
+   Filing out BrowserListObject>>minimize
+   Filing out BrowserListObject>>originalClass
+   Filing out BrowserListObject>>originalClass:
+   Filing out BrowserListObject>>printOn:
+   Filing out BrowserListObject>>type
+   Filing out BrowserListObject>>type:
+   Filing out BrowserListObject>>typeWithoutMinChar
+   Filing out BrowserListObject>>whichClass
+   Filing out BrowserListObject>>window
+   Filing out BrowserListObject>>window:
+   Filing out BrowserListUI class>>includeClass
+   Filing out BrowserListUI class>>wbBasicVersion
+   Filing out BrowserListUI>>allColorCombos
+   Filing out BrowserListUI>>closeSelected
+   Filing out BrowserListUI>>createViews
+   Filing out BrowserListUI>>filesButtonPressed
+   Filing out BrowserListUI>>hideAllButtonPressed
+   Filing out BrowserListUI>>hideSelected
+   Filing out BrowserListUI>>initWindow
+   Filing out BrowserListUI>>loadBrowserListObjects
+   Filing out BrowserListUI>>openWhenSelected:
+   Filing out BrowserListUI>>recent
+   Filing out BrowserListUI>>recent:
+   Filing out BrowserListUI>>refreshButtonPressed
+   Filing out BrowserListUI>>refreshGrid
+   Filing out BrowserListUI>>selectedItem
+   Filing out BrowserListUI>>setColors:
+   Filing out BrowserListUI>>showColorComboDialog
+   Filing out BrowserListUI>>showSelected
+   Filing out BrowserListUI>>views
+   Filing out BrowserListUI>>views:
+   Filing out OrderedCollection>>at:
+Done!
+
+Generating "info" file...
+
+Building SLL...
+
+
+Creating NLS file...
+     The current NLS file is OK.
+
+Generating "test plan" file...
+Walking objects...
+   imported: AssocExternal ( 'ClassHierarchyBrowser' ) ...
+   imported: AssocExternal ( 'Browser' ) ...
+   imported: AssocExternal ( 'Notifier' ) ...
+   adding OrderedCollection>>at: ...
+   adding BrowserListObject ...
+   imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'ListBox' ) ...
+   imported: AssocExternal ( 'LayoutFrame' ) ...
+   adding BrowserListUI ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   imported: AssocExternal ( 'Color' ) ...
+   imported: AssocExternal ( 'CPColumnarListBox' ) ...
+   imported: AssocExternal ( 'Button' ) ...
+   imported: AssocExternal ( 'Font' ) ...
+   imported: AssocExternal ( 'Menu' ) ...
+   imported: AssocExternal ( 'CPCLBField' ) ...
+   adding BrowserListEditDialog ...
+   imported: GlobalExternal ( 'WindowDialog' ) ...
+Writing file: C:\LabWare-8\SOURCE\!Browser.sll ...
+.............   object space written, 202 objects, 10461 bytes
+   writing source code...
+...done.
+
+--- SLL Dependencies -------------------------------------------------------------------------
+    <none>
+------------------------------------------------------------------------------------------------------------
+
+Complete!
+
