@@ -1,4 +1,3 @@
-
 Object subclass: #NFLBoxPoolAnalyzer
   instanceVariableNames: ''
   classVariableNames: ''
@@ -1922,7 +1921,7 @@ wbBasicVersion
 
 	"Private - Answer the WindowBuilder Pro version.
 		Generated in: Visual Smalltalk 3.1.0 Win32"
-    #CodeTrackerBlock.  "Last Modified  11:10:18 07/14/25"
+    #CodeTrackerBlock.  "Last Modified  11:17:07 07/14/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -1984,7 +1983,7 @@ createViews
 	the WindowBuilder API will probably be lost the next time 
 	you save your layout definition."
     | divisionSeasonsList mainView segoeUI8 xDU yDU |
-    #CodeTrackerBlock.  "Last Modified  11:10:18 07/14/25"
+    #CodeTrackerBlock.  "Last Modified  11:17:07 07/14/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -2114,7 +2113,6 @@ createViews
                  addLast: (
                     CPCLBField new
                          header: 'Result';
-                         justification: #center;
                          selector: #bestResult);
                  yourself).
     mainView addSubpane: divisionSeasonsList! !
@@ -2122,7 +2120,7 @@ createViews
 
 
 !NFLDivisionSeasonsUI methods !
-  
+
 initWindow
 
 	"initialize DivisionSeasonsUI"
@@ -5811,6 +5809,26 @@ gamesMissedByHeadCoach: coachName
 
 !NFLTeamSeason methods !
  
+gamesOutsideConference
+
+		"helper method to get games out of conference from TeamInGame class"
+    #CodeTrackerBlock.  "Last Modified  11:23:06 07/14/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self regularSeasonGames select: [:tig | tig isOutsideConference]! !
+
+
+
+!NFLTeamSeason methods !
+ 
 homeRecord
 
 	 "counts wins-loss-ties for home games (only displays ties if they exist [ties>0])"
@@ -5834,8 +5852,7 @@ homeRecord
 icRecord
 
 		"counts wins-loss-ties played against teams in the other conference (only displays ties if they exist [ties>0])"
-    | icGames |
-    #CodeTrackerBlock.  "Last Modified  10:10:33 07/09/25"
+    #CodeTrackerBlock.  "Last Modified  11:23:39 07/14/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5846,17 +5863,12 @@ icRecord
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
-    icGames := self games select: [:tig |
-        | opp|opp := tig game homeTeam = tig
-            ifTrue:[tig game visitorTeam]
-            ifFalse:[tig game homeTeam].
-        opp conference ~= self conference].
-    ^self recordStringForGames: icGames.! !
+    ^self recordStringForGames: self gamesOutsideConference! !
 
 
 
 !NFLTeamSeason methods !
-
+ 
 lastGameHeadCoach
 
 "head coach for the last game of the season"
