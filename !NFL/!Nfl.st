@@ -1,4 +1,3 @@
-
 Object subclass: #NFLBoxPoolAnalyzer
   instanceVariableNames: ''
   classVariableNames: ''
@@ -4945,7 +4944,7 @@ wbBasicVersion
 
 	"Private - Answer the WindowBuilder Pro version.
 		Generated in: Visual Smalltalk 3.1.0 Win32"
-    #CodeTrackerBlock.  "Last Modified  15:22:03 07/15/25"
+    #CodeTrackerBlock.  "Last Modified  13:33:27 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -4969,7 +4968,7 @@ addSubpanes
 	the WindowBuilder API will probably be lost the next time 
 	you save your layout definition."
     | divisionNameField segoeUI8 standingsList xDU yDU |
-    #CodeTrackerBlock.  "Last Modified  15:22:03 07/15/25"
+    #CodeTrackerBlock.  "Last Modified  13:33:27 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5016,6 +5015,12 @@ addSubpanes
                  bottomInset: -2208 / 19 * yDU);
         startGroup;
         noTabStop;
+        receiveAllWindowMessages;
+        setPopupMenu: (
+            Menu new
+                 title: '';
+                 owner: self;
+                 appendItem: 'Show Games' selector: #openGamesForSelectedTeam);
         font: SysFont;
         colorMethod: #seasonResultColor;
         fields: (
@@ -5027,42 +5032,52 @@ addSubpanes
                  addLast: (
                     CPCLBField new
                          header: 'W';
+                         justification: #center;
                          selector: #wins);
                  addLast: (
                     CPCLBField new
                          header: 'L';
+                         justification: #center;
                          selector: #losses);
                  addLast: (
                     CPCLBField new
                          header: 'T';
+                         justification: #center;
                          selector: #ties);
                  addLast: (
                     CPCLBField new
                          header: 'Pct';
+                         justification: #center;
                          selector: #winningPercentage);
                  addLast: (
                     CPCLBField new
                          header: 'Div';
+                         justification: #center;
                          selector: #divRecord);
                  addLast: (
                     CPCLBField new
                          header: 'Conf';
+                         justification: #center;
                          selector: #confRecord);
                  addLast: (
                     CPCLBField new
                          header: 'IC';
+                         justification: #center;
                          selector: #icRecord);
                  addLast: (
                     CPCLBField new
                          header: 'PF';
+                         justification: #center;
                          selector: #pointsFor);
                  addLast: (
                     CPCLBField new
                          header: 'PA';
+                         justification: #center;
                          selector: #pointsAllowed);
                  addLast: (
                     CPCLBField new
                          header: 'Diff';
+                         justification: #center;
                          selector: #pointDifferential);
                  addLast: (
                     CPCLBField new
@@ -5091,12 +5106,14 @@ addSubpanes
 
 
 !NFLStandingsComposite methods !
-   
+
 contents: aDivisionSeason 
 
-	 "creating a contents method to call for our composite, and sorting our teamSeasons by winning % when loading the grid"
+	"creating a contents method to call for our composite, and sorting our teamSeasons by winning % when loading the grid"
+
+	"also checks the state of the ats button to consider if we are using regular % or ats %"
     | teamsList divisionNameField sortedTeams |
-    #CodeTrackerBlock.  "Last Modified  10:05:10 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  12:47:03 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5110,16 +5127,14 @@ contents: aDivisionSeason
     teamsList := self paneNamed: 'standingsList'.
     divisionNameField := self paneNamed: 'divisionNameField'.
     sortedTeams := aDivisionSeason teamSeasons asSortedCollection: [:a :b |
-        (showATS
-            ifTrue:[a atsWinningPercentage >= b atsWinningPercentage]
-            ifFalse:[a winningPercentage >= b winningPercentage])].
+        a isBetterThan: b atsStandings: self showATS].
     teamsList contents: sortedTeams.
     divisionNameField contents: aDivisionSeason conferenceDivision.! !
 
 
 
 !NFLStandingsComposite methods !
- 
+   
 fillDivisionNameField: divisionSeason 
 
 	"fill the division name field"
@@ -5167,6 +5182,34 @@ fillDivisionNameFieldWithDisplayName: displayName
 
 !NFLStandingsComposite methods !
 
+openGamesForSelectedTeam
+
+		  "open the original NFLUI of all the games for a selected teamSeason"
+    | selectedTeamSeason teamGames |
+    #CodeTrackerBlock.  "Last Modified  13:22:59 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    "selected teamSeason"
+    selectedTeamSeason := (self paneNamed: 'standingsList') selectedItem.
+
+	"games for that teamSeason"
+    teamGames := selectedTeamSeason uniqueGames.
+
+	"Open the original NFLUI to show those games"
+    NFLUI openOn: teamGames.! !
+
+
+
+!NFLStandingsComposite methods !
+  
 showATS
 
 	"Answer my 'showATS' instance variable."
@@ -5513,6 +5556,38 @@ createViews
 
 !NFLStandingsUI methods !
 
+divisionColors
+
+		"color the composites"
+    | d |
+    #CodeTrackerBlock.  "Last Modified  11:26:49 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    d := Dictionary new.
+    d at: 'NE' put: Color blue.
+    d at: 'NN' put: Color blue.
+    d at: 'NC' put: Color blue.
+    d at: 'NW' put: Color blue.
+    d at: 'NS' put: Color blue.
+    d at: 'AE' put: Color pink.
+    d at: 'AN' put: Color pink.
+    d at: 'AC' put: Color pink.
+    d at: 'AW' put: Color pink.
+    d at: 'AS' put: Color pink.
+    ^d! !
+
+
+
+!NFLStandingsUI methods !
+  
 divisionDictionary
 
 	"associates each division with a pane"
@@ -5602,8 +5677,8 @@ initWindow
 populateDivisionComposites
 
 	"fill each composite with divisionSeason object based on their pane's divisionCode that is mapped to it"
-    | divisionPaneDictionary divisionSeasons displayName |
-    #CodeTrackerBlock.  "Last Modified  10:36:27 07/16/25"
+    | divisionPaneDictionary divisionSeasons displayName color |
+    #CodeTrackerBlock.  "Last Modified  11:24:23 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5621,10 +5696,14 @@ populateDivisionComposites
         | divisionCode paneName composite|divisionCode := divisionSeason conferenceDivision.
         paneName := divisionPaneDictionary at: divisionCode ifAbsent: [nil].
         composite := self paneNamed: paneName.
+        color := self divisionColors at: divisionCode ifAbsent: [Color white].
         composite ifNotNil: [
             composite showATS: self showATS. "reads the button state (value)"
             composite contents: divisionSeason.
-            displayName := self divisionDisplayNames at: divisionCode ifAbsent: [divisionCode]. "look up the readable name in UI class and call method in composite class"
+            composite
+                backColor2: color;
+                foreColor: Color black.
+            displayName := self divisionDisplayNamesDictionary at: divisionCode ifAbsent: [divisionCode]. "look up the readable name in UI class and call method in composite class"
             composite fillDivisionNameFieldWithDisplayName: displayName.].].! !
 
 
@@ -6917,9 +6996,9 @@ atsTies
  
 atsWinningPercentage
 
-	"calc ats winning % for a team's season"
-    | total |
-    #CodeTrackerBlock.  "Last Modified  09:28:02 07/16/25"
+    "calc ats winning % for a team's season"
+    | total atsWins atsTies |
+    #CodeTrackerBlock.  "Last Modified  12:49:47 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -6930,15 +7009,17 @@ atsWinningPercentage
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
+    atsWins := self atsWins.
+    atsTies := self atsTies.
     total := self regularSeasonGames size.
     total = 0
         ifTrue:[^0].
-    ^((self atsWins asFloat / total) * 100) roundTo: 0.001! !
+    ^(atsWins + (atsTies * 0.50) / total asFloat) * 100 roundTo: 0.001! !
 
 
 
 !NFLTeamSeason methods !
-   
+
 atsWins
 
 	"counts the ats wins for a team in regular season games"
@@ -7408,6 +7489,148 @@ icRecord
 
 !NFLTeamSeason methods !
  
+isBetterThan: anotherTeamSeason 
+
+	"Return true if the receiver should be sorted before anotherTeamSeason.
+	only called if the winning percentages are exactly equa between teamSeasons."
+    | percentSelf percentOther |
+    #CodeTrackerBlock.  "Last Modified  12:37:50 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    percentSelf := self winningPercentage.
+    percentOther := anotherTeamSeason winningPercentage.
+    percentSelf > percentOther
+        ifTrue:[^true].
+    percentSelf < percentOther
+        ifTrue:[^false].
+
+	"use playoff status as tie-breaker."
+    (self isDivisionWinner and: [anotherTeamSeason isDivisionWinner not])
+        ifTrue:[^true].
+    (anotherTeamSeason isDivisionWinner and: [self isDivisionWinner not])
+        ifTrue:[^false].
+    (self isWildCard and: [anotherTeamSeason isNonPlayoff])
+        ifTrue:[^true].
+    (anotherTeamSeason isWildCard and: [self isNonPlayoff])
+        ifTrue:[^false].
+    ^false "everything is the same"! !
+
+
+
+!NFLTeamSeason methods !
+ 
+isBetterThan: anotherTeamSeason atsStandings: atsStatus 
+
+	"Return true if the receiver should be sorted before anotherTeamSeason.
+	only called if the winning percentages are exactly equa between teamSeasons."
+
+	"also checks status of the ats radio button to compare ats winning % instead of regular winning %"
+    | percentSelf percentOther |
+    #CodeTrackerBlock.  "Last Modified  12:47:39 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    percentSelf := atsStatus
+        ifTrue:[self atsWinningPercentage]
+        ifFalse:[self winningPercentage].
+    percentOther := atsStatus
+        ifTrue:[anotherTeamSeason atsWinningPercentage]
+        ifFalse:[anotherTeamSeason winningPercentage].
+    percentSelf > percentOther
+        ifTrue:[^true].
+    percentSelf < percentOther
+        ifTrue:[^false].
+
+	"use playoff status as tie-breaker."
+    (self isDivisionWinner and: [anotherTeamSeason isDivisionWinner not])
+        ifTrue:[^true].
+    (anotherTeamSeason isDivisionWinner and: [self isDivisionWinner not])
+        ifTrue:[^false].
+    (self isWildCard and: [anotherTeamSeason isNonPlayoff])
+        ifTrue:[^true].
+    (anotherTeamSeason isWildCard and: [self isNonPlayoff])
+        ifTrue:[^false].
+    ^false "everything is the same"! !
+
+
+
+!NFLTeamSeason methods !
+   
+isDivisionWinner
+
+		"returns if a team won the division"
+    #CodeTrackerBlock.  "Last Modified  12:15:08 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self madePlayoffs and: [self lostWC not]! !
+
+
+
+!NFLTeamSeason methods !
+   
+isNonPlayoff
+
+"checks that the team missed playoffs"
+    #CodeTrackerBlock.  "Last Modified  12:30:07 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self missedPlayoffs! !
+
+
+
+!NFLTeamSeason methods !
+
+isWildCard
+
+"checks that a team made the playoffs, but lost in the WC round"
+    #CodeTrackerBlock.  "Last Modified  12:29:29 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self madePlayoffs and: [self lostWC]! !
+
+
+
+!NFLTeamSeason methods !
+   
 lastGameHeadCoach
 
 "head coach for the last game of the season"
@@ -8308,9 +8531,9 @@ wasCoachFiredBeforeSeasonEnd
   
 winningPercentage
 
-		"calc winning % for a team's season"
-    | total |
-    #CodeTrackerBlock.  "Last Modified  16:31:48 07/15/25"
+        "calc winning % for a team's season"
+    | total wins ties |
+    #CodeTrackerBlock.  "Last Modified  11:32:53 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8321,15 +8544,17 @@ winningPercentage
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
+    wins := self wins.
+    ties := self ties.
     total := self regularSeasonGames size.
     total = 0
         ifTrue:[^0].
-    ^((self wins asFloat / total) * 100) roundTo: 0.001! !
+    ^(wins + (ties * 0.50) / total asFloat) * 100 roundTo: 0.001! !
 
 
 
 !NFLTeamSeason methods !
-
+   
 wins
 
 	"counts the wins for a team in a season"
