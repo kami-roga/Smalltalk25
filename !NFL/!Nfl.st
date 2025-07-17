@@ -32,10 +32,6 @@ Object subclass: #NFLHeadCoach
     ' games name '
   classVariableNames: ''
   poolDictionaries: ''  !
-Object subclass: #NFLStandings
-  instanceVariableNames: ''
-  classVariableNames: ''
-  poolDictionaries: ''    !
 Object subclass: #NFLTeamInGame
   instanceVariableNames: 
     ' teamName conferenceDivision coach q1 q2 q3 q4 overtime game '
@@ -44,6 +40,11 @@ Object subclass: #NFLTeamInGame
 Object subclass: #NFLTeamSeason
   instanceVariableNames: 
     ' teamName games season nextSeason '
+  classVariableNames: ''
+  poolDictionaries: ''   !
+Object subclass: #NFLTeamSeasonATSRedirectWrapper
+  instanceVariableNames: 
+    ' teamSeason '
   classVariableNames: ''
   poolDictionaries: ''   !
 ViewManager subclass: #NFLBoxPoolUI
@@ -2567,7 +2568,7 @@ fromString: aString id: anId
 
 					 "converts csv data into instances of aGame"
     | var aGame visitorFields homeFields |
-    #CodeTrackerBlock.  "Last Modified  11:50:37 07/02/25"
+    #CodeTrackerBlock.  "Last Modified  10:55:13 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -2591,11 +2592,11 @@ fromString: aString id: anId
             ifFalse:[nil]).
     aGame vegasLine: (
         (var at: 6) notEmpty
-            ifTrue:[(var at: 6) asInteger]
+            ifTrue:[(var at: 6) asFloat]
             ifFalse:[nil]).
     aGame overUnder: (
         (var at: 7) notEmpty
-            ifTrue:[(var at: 7) asInteger]
+            ifTrue:[(var at: 7) asFloat]
             ifFalse:[nil]).
 
 	 "temperature (not reported for domes)"
@@ -2644,9 +2645,8 @@ includeClass
  
 atsWinner
 
-		"determines the atsWinner by adjusting the favorite's score with the vegas Line, and then returning the resulting winner (favorite or underdog, or nil)"
-    | favorite underdog adjustedScore |
-    #CodeTrackerBlock.  "Last Modified  16:10:20 06/26/25"
+    "determines the atsWinner by adjusting the favorite's score with the vegas Line, and then returning the resulting winner (favorite or underdog, or nil)"
+    #CodeTrackerBlock.  "Last Modified  10:07:14 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -2657,21 +2657,29 @@ atsWinner
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
-    vegasLine isNil
+    self vegasLine isNil
         ifTrue:[^nil].
-    favorite := self vegasFavorite.
-    underdog := self vegasUnderdog.
-    adjustedScore := (favorite totalPoints) + vegasLine.
+    (self homeTeamFinalScoreATS > self visitorTeamFinalScoreATS)
+        ifTrue:[^self homeTeam].
+    (self visitorTeamFinalScoreATS > self homeTeamFinalScoreATS)
+        ifTrue:[^self visitorTeam].
+    ^nil
+
+    "vegasLine isNil
+		ifTrue:[^nil].
+	favorite := self vegasFavorite.
+	underdog := self vegasUnderdog.
+	adjustedScore := (favorite totalPoints) + vegasLine.
     (adjustedScore > underdog totalPoints)
-        ifTrue:[^favorite].
-    (adjustedScore < underdog totalPoints)
-        ifTrue:[^underdog].
-    ^nil.! !
+		ifTrue:[^favorite].
+	(adjustedScore < underdog totalPoints)
+		ifTrue:[^underdog].
+	^nil."! !
 
 
 
 !NFLGame methods !
-
+ 
 date
     #CodeTrackerBlock.  "Last Modified  16:22:10 06/25/25"
     #LabWare. "Owner"
@@ -2800,6 +2808,28 @@ homeTeam: aValue
 
 !NFLGame methods !
 
+homeTeamFinalScoreATS
+
+	"Returns the home team's score adjusted for the ATS line if they are the favorite."
+    #CodeTrackerBlock.  "Last Modified  10:04:04 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self homeTeamWasFavorite
+        ifTrue:[self homeTeam totalPoints + (self vegasLine)]
+        ifFalse:[self homeTeam totalPoints]! !
+
+
+
+!NFLGame methods !
+  
 homeTeamWasFavorite
     #CodeTrackerBlock.  "Last Modified  09:09:42 06/26/25"
     #LabWare. "Owner"
@@ -3551,6 +3581,28 @@ visitorTeam: aValue
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitorTeam := aValue! !
+
+
+
+!NFLGame methods !
+  
+visitorTeamFinalScoreATS
+
+	"Returns the visitor team's score adjusted for the ATS line if they are the favorite."
+    #CodeTrackerBlock.  "Last Modified  10:04:30 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self homeTeamWasFavorite
+        ifTrue:[self visitorTeam totalPoints]
+        ifFalse:[self visitorTeam totalPoints + (self vegasLine)]! !
 
 
 
@@ -4898,28 +4950,8 @@ views: aValue
 
 
 
-!NFLStandings class methods !
-   
-includeClass
-
-		"This method informs CodeTracker what tracks this class belongs to."
-    #CodeTrackerBlock.  "Last Modified  13:56:29 07/14/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
-
-    ^true! !
-
-
-
 !NFLStandingsComposite class methods !
- 
+  
 includeClass
 
 		"This method informs CodeTracker what tracks this class belongs to."
@@ -4944,7 +4976,7 @@ wbBasicVersion
 
 	"Private - Answer the WindowBuilder Pro version.
 		Generated in: Visual Smalltalk 3.1.0 Win32"
-    #CodeTrackerBlock.  "Last Modified  13:33:27 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  16:51:45 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -4968,7 +5000,7 @@ addSubpanes
 	the WindowBuilder API will probably be lost the next time 
 	you save your layout definition."
     | divisionNameField segoeUI8 standingsList xDU yDU |
-    #CodeTrackerBlock.  "Last Modified  13:33:27 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  16:51:45 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5113,7 +5145,7 @@ contents: aDivisionSeason
 
 	"also checks the state of the ats button to consider if we are using regular % or ats %"
     | teamsList divisionNameField sortedTeams |
-    #CodeTrackerBlock.  "Last Modified  12:47:03 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  10:46:22 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5129,32 +5161,8 @@ contents: aDivisionSeason
     sortedTeams := aDivisionSeason teamSeasons asSortedCollection: [:a :b |
         a isBetterThan: b atsStandings: self showATS].
     teamsList contents: sortedTeams.
-    divisionNameField contents: aDivisionSeason conferenceDivision.! !
-
-
-
-!NFLStandingsComposite methods !
-   
-fillDivisionNameField: divisionSeason 
-
-	"fill the division name field"
-
-	"old method that displayed division codes, instead of readable names"
-    | displayName divisionNameField |
-    #CodeTrackerBlock.  "Last Modified  10:37:53 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
-
-    displayName := divisionSeason conferenceDivision.
-    divisionNameField := self paneNamed: 'divisionNameField'.
-    divisionNameField contents: displayName.! !
+    divisionNameField contents: aDivisionSeason conferenceDivision.
+    self useDivision: aDivisionSeason ats: showATS.! !
 
 
 
@@ -5248,8 +5256,34 @@ showATS: aBoolean
 
 
 
+!NFLStandingsComposite methods !
+ 
+useDivision: aDivision ats: atsBoolean 
+
+    | theTeamSeasons |
+    #CodeTrackerBlock.  "Last Modified  10:47:02 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    theTeamSeasons := aDivision teamSeasons.
+    atsBoolean
+        ifTrue:[
+            theTeamSeasons := theTeamSeasons collect: [:aTeamSeason |
+                NFLTeamSeasonATSRedirectWrapper on: aTeamSeason].].
+    (self paneNamed: 'standingsList') contents: (
+        theTeamSeasons asSortedCollection: [:a :b | a winningPercentage > b winningPercentage]).! !
+
+
+
 !NFLStandingsUI class methods !
-  
+   
 includeClass
 
 		"This method informs CodeTracker what tracks this class belongs to."
@@ -5294,7 +5328,7 @@ wbBasicVersion
 atsButtonOn
 
 	"standings when ATS selected"
-    #CodeTrackerBlock.  "Last Modified  16:09:14 07/15/25"
+    #CodeTrackerBlock.  "Last Modified  09:25:47 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5305,8 +5339,9 @@ atsButtonOn
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
-    self populateDivisionComposites.
-    (self paneNamed: 'wlButton') value: false.! !
+    (self paneNamed: 'wlButton') value: false.
+    (self paneNamed: 'atsButton') value: true.
+    self populateDivisionComposites.! !
 
 
 
@@ -5742,7 +5777,7 @@ populateYearDropdown
 showATS
 
 "check current button state"
-    #CodeTrackerBlock.  "Last Modified  10:10:16 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  09:16:48 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5753,33 +5788,34 @@ showATS
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
-    ^(self paneNamed: 'atsButton') value! !
-
-
-
-!NFLStandingsUI methods !
-  
-wlButtonOn
-
-		"default normal sandings when W/L selected"
-    #CodeTrackerBlock.  "Last Modified  16:08:37 07/15/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
-
-    self populateDivisionComposites.
-    (self paneNamed: 'atsButton') value: false.! !
+    ^(self paneNamed: 'atsButton') value.! !
 
 
 
 !NFLStandingsUI methods !
  
+wlButtonOn
+
+		"default normal sandings when W/L selected"
+    #CodeTrackerBlock.  "Last Modified  09:25:36 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    (self paneNamed: 'atsButton') value: false.
+    (self paneNamed: 'wlButton') value: true.
+    self populateDivisionComposites.! !
+
+
+
+!NFLStandingsUI methods !
+  
 yearSelectionChanged
 
 		"hides south panes if the year selected is before 2002"
@@ -5865,7 +5901,7 @@ includeClass
 atsLost
 
 	"calls atsWinner from NFLGame to associate that the team lost against the spread"
-    #CodeTrackerBlock.  "Last Modified  09:11:59 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  10:58:58 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -5876,12 +5912,14 @@ atsLost
     #?. "LabTrackId"
     #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
-    ^self game atsWinner notNil and: [self game atsWinner ~= self].! !
+    self atsTied
+        ifTrue:[^false].
+    ^self game atsWinner ~= self.! !
 
 
 
 !NFLTeamInGame methods !
-  
+
 atsMargin
 
 		"Returns the margin by which this team covered or failed the spread in this game, or 0 if no vegas line."
@@ -6797,8 +6835,8 @@ atsIcRecord
    
 atsLosses
 
-	"counts the ats ties for a team in a season for regular games"
-    #CodeTrackerBlock.  "Last Modified  09:11:33 07/16/25"
+		"counts the ats ties for a team in a season for regular games"
+    #CodeTrackerBlock.  "Last Modified  10:47:28 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -6814,7 +6852,7 @@ atsLosses
 
 
 !NFLTeamSeason methods !
-   
+  
 atsNonDivisionPaRecord
 
 	"total points allowed (PA) to opponent team when against opponent outsde their division ATS"
@@ -6977,7 +7015,7 @@ atsStreak
 atsTies
 
 	"counts the ats ties for a team in a season for regular games"
-    #CodeTrackerBlock.  "Last Modified  09:11:15 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  09:56:15 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -6998,7 +7036,7 @@ atsWinningPercentage
 
     "calc ats winning % for a team's season"
     | total atsWins atsTies |
-    #CodeTrackerBlock.  "Last Modified  12:49:47 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  09:30:53 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -7014,16 +7052,16 @@ atsWinningPercentage
     total := self regularSeasonGames size.
     total = 0
         ifTrue:[^0].
-    ^(atsWins + (atsTies * 0.50) / total asFloat) * 100 roundTo: 0.001! !
+    ^((atsWins + (atsTies * 0.50)) / total asFloat) * 100 roundTo: 0.001! !
 
 
 
 !NFLTeamSeason methods !
-
+  
 atsWins
 
-	"counts the ats wins for a team in regular season games"
-    #CodeTrackerBlock.  "Last Modified  09:10:39 07/16/25"
+		"counts the ats wins for a team in regular season games"
+    #CodeTrackerBlock.  "Last Modified  09:56:28 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -7039,7 +7077,7 @@ atsWins
 
 
 !NFLTeamSeason methods !
-
+   
 awayRecord
 
 	"counts wins-loss-ties for away games (only displays ties if they exist [ties>0])"
@@ -8318,9 +8356,9 @@ seasonResultColor
 
 streak
 
-		"takes the results collection (comprised of 'W''s and 'L's) and counts teh consecutive wins or losses fstarting backwards from the last game, stopping at the first different result"
+		"takes the results collection (comprised of 'W''s and 'L's) and counts the consecutive wins or losses starting backwards from the last game, stopping at the first different result"
     | results streakChar streakCount |
-    #CodeTrackerBlock.  "Last Modified  12:58:00 07/15/25"
+    #CodeTrackerBlock.  "Last Modified  15:43:24 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8347,7 +8385,7 @@ streak
 
 
 !NFLTeamSeason methods !
- 
+  
 strengthPoints
 
 		"assigns each result to a score"
@@ -8533,7 +8571,7 @@ winningPercentage
 
         "calc winning % for a team's season"
     | total wins ties |
-    #CodeTrackerBlock.  "Last Modified  11:32:53 07/16/25"
+    #CodeTrackerBlock.  "Last Modified  09:34:30 07/17/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8549,12 +8587,12 @@ winningPercentage
     total := self regularSeasonGames size.
     total = 0
         ifTrue:[^0].
-    ^(wins + (ties * 0.50) / total asFloat) * 100 roundTo: 0.001! !
+    ^((wins + (ties * 0.50)) / total asFloat) * 100 roundTo: 0.001! !
 
 
 
 !NFLTeamSeason methods !
-   
+ 
 wins
 
 	"counts the wins for a team in a season"
@@ -8618,8 +8656,272 @@ wonSuperBowl
 
 
 
-!NFLTeamSeasonsUI class methods !
+!NFLTeamSeasonATSRedirectWrapper class methods !
+
+includeClass
+
+		"This method informs CodeTracker what tracks this class belongs to."
+    #CodeTrackerBlock.  "Last Modified  16:39:04 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^true! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper class methods !
    
+on: aTeamSeason 
+
+		"making a NFLTeamSeasonATSRedirectWrapper instance with the current teamSeason. place to redirect messages"
+    | ts |
+    #CodeTrackerBlock.  "Last Modified  16:50:13 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ts := self new.
+    ts teamSeason: aTeamSeason.
+    ^ts.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+ 
+confRecord
+    #CodeTrackerBlock.  "Last Modified  10:29:28 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsConfRecord.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+   
+divRecord
+    #CodeTrackerBlock.  "Last Modified  10:29:10 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsDivRecord.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+ 
+doesNotUnderstand: aMessage 
+
+		"message"
+    #CodeTrackerBlock.  "Last Modified  16:43:24 07/16/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    aMessage receiver: self teamSeason.
+    ^aMessage perform.
+
+	"^self teamSeason perform: aMessage selector"! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+
+icRecord
+    #CodeTrackerBlock.  "Last Modified  10:28:54 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsIcRecord.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+   
+losses
+    #CodeTrackerBlock.  "Last Modified  10:37:30 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsLosses.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+   
+pointsFor
+    #CodeTrackerBlock.  "Last Modified  10:32:26 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsPointsFor! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+  
+streak
+    #CodeTrackerBlock.  "Last Modified  10:37:44 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsStreak! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+
+teamSeason
+    #CodeTrackerBlock.  "Last Modified  09:35:30 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^teamSeason! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+ 
+teamSeason: aValue
+    #CodeTrackerBlock.  "Last Modified  09:35:30 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    teamSeason := aValue! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+
+ties
+    #CodeTrackerBlock.  "Last Modified  10:38:19 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsTies.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+   
+winningPercentage
+    #CodeTrackerBlock.  "Last Modified  10:33:10 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsWinningPercentage.! !
+
+
+
+!NFLTeamSeasonATSRedirectWrapper methods !
+ 
+wins
+    #CodeTrackerBlock.  "Last Modified  10:38:33 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^self teamSeason atsWins.! !
+
+
+
+!NFLTeamSeasonsUI class methods !
+
 includeClass
 
 		"This method informs CodeTracker what tracks this class belongs to."
@@ -8668,7 +8970,7 @@ wbBasicVersion
 
 	"Private - Answer the WindowBuilder Pro version.
 		Generated in: Visual Smalltalk 3.1.0 Win32"
-    #CodeTrackerBlock.  "Last Modified  12:59:23 07/14/25"
+    #CodeTrackerBlock.  "Last Modified  15:14:16 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8751,7 +9053,7 @@ createMenus: aPane
 	WindowBuilder. Code you add here which does not conform to 
 	the WindowBuilder API will probably be lost the next time 
 	you save your layout definition."
-    #CodeTrackerBlock.  "Last Modified  12:59:23 07/14/25"
+    #CodeTrackerBlock.  "Last Modified  15:14:16 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8788,7 +9090,7 @@ createViews
 	the WindowBuilder API will probably be lost the next time 
 	you save your layout definition."
     | mainView segoeUI8 teamSeasonsList xDU yDU |
-    #CodeTrackerBlock.  "Last Modified  12:59:23 07/14/25"
+    #CodeTrackerBlock.  "Last Modified  15:14:16 07/16/25"
     #LabWare. "Owner"
     #?. "Type"
     #?. "Project"
@@ -8854,7 +9156,7 @@ createViews
                  appendItem: 'Show Season' selector: #showOriginalGamesList);
         font: segoeUI8;
         headerColor: (
-            RGBColor red: 205 green: 220 blue: 254);
+            RGBColor red: 240 green: 240 blue: 240);
         canSort: true;
         colorMethod: #seasonResultColor;
         fields: (
