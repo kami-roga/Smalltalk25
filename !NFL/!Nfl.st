@@ -1,3 +1,4 @@
+
 Object subclass: #NFLBoxPoolAnalyzer
   instanceVariableNames: ''
   classVariableNames: ''
@@ -20,6 +21,11 @@ Object subclass: #NFLDatabase
 Object subclass: #NFLDivisionSeason
   instanceVariableNames: 
     ' season conferenceDivision teamSeasons '
+  classVariableNames: ''
+  poolDictionaries: ''  !
+Object subclass: #NFLFranchise
+  instanceVariableNames: 
+    ' abbrev allFranchises names teamSeasons '
   classVariableNames: ''
   poolDictionaries: ''  !
 Object subclass: #NFLGame
@@ -114,7 +120,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -135,7 +141,7 @@ analyzeGames: games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     grid := NFLBoxPoolGrid new.
     games do: [:game | grid incrementCountForPair: (game lastDigitOfScore).].
@@ -158,7 +164,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -178,7 +184,7 @@ finalCountAndPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     totalGames = 0
         ifTrue:[^self].
@@ -201,7 +207,7 @@ incrementCountForPair: aPair
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     aRow := self rows detect: [:each | each digits = aPair] ifNone: [nil].
     aRow isNil
@@ -231,7 +237,7 @@ rows
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^rows ifNil: [rows := OrderedCollection new]! !
 
@@ -251,7 +257,7 @@ rows: aCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     rows := aCollection.! !
 
@@ -271,7 +277,7 @@ sortedRowsByPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self rows asSortedCollection: [:a :b | a percentage > b percentage]! !
 
@@ -291,7 +297,7 @@ totalGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^totalGames ifNil: [totalGames := 0]! !
 
@@ -309,7 +315,7 @@ totalGames: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     totalGames := aValue! !
 
@@ -329,7 +335,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -349,7 +355,7 @@ count
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^count ifNil: [0]! !
 
@@ -367,7 +373,7 @@ count: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     count := aValue! !
 
@@ -385,7 +391,7 @@ digits
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^digits! !
 
@@ -403,7 +409,7 @@ digits: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     digits := aValue! !
 
@@ -421,7 +427,7 @@ percentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^percentage! !
 
@@ -439,7 +445,7 @@ percentage: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     percentage := aValue! !
 
@@ -457,7 +463,7 @@ rowNumber
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^rowNumber! !
 
@@ -475,7 +481,7 @@ rowNumber: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     rowNumber := aValue! !
 
@@ -495,7 +501,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -516,7 +522,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -534,7 +540,7 @@ allGrid
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^allGrid! !
 
@@ -552,7 +558,7 @@ allGrid: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     allGrid := aValue! !
 
@@ -570,7 +576,7 @@ allRows
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^allRows! !
 
@@ -588,7 +594,7 @@ allRows: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     allRows := aValue! !
 
@@ -606,7 +612,7 @@ analyzer
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^analyzer! !
 
@@ -624,7 +630,7 @@ analyzer: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     analyzer := aValue! !
 
@@ -648,7 +654,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -763,7 +769,7 @@ db
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^db! !
 
@@ -781,7 +787,7 @@ db: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     db := aValue! !
 
@@ -799,7 +805,7 @@ games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games! !
 
@@ -817,7 +823,7 @@ games: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     games := aValue! !
 
@@ -843,7 +849,7 @@ gridListSelectionChanged: aPane
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedItem := aPane selectedItems isEmpty
         ifTrue:[^self]
@@ -872,7 +878,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     db := NFLDatabase new.
@@ -896,7 +902,7 @@ populateAllGridAndRows
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "load in the data into gridList for the allGrid (selected 'All')"
     analyzer := NFLBoxPoolAnalyzer new.
@@ -922,7 +928,7 @@ populateGridList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     dropdownValue := (self paneNamed: 'comboDropdown') value.
     self populateAllGridAndRows.
@@ -952,7 +958,7 @@ populateWonGridAndRows
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "load in the data into gridList for the wonGrid (selected 'Won')"
     wonGrid := NFLBoxPoolGrid new.
@@ -977,7 +983,7 @@ views
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^views! !
 
@@ -995,7 +1001,7 @@ views: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     views := aValue! !
 
@@ -1013,7 +1019,7 @@ wonGrid
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^wonGrid! !
 
@@ -1031,7 +1037,7 @@ wonGrid: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     wonGrid := aValue! !
 
@@ -1049,7 +1055,7 @@ wonRows
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^wonRows! !
 
@@ -1067,7 +1073,7 @@ wonRows: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     wonRows := aValue! !
 
@@ -1087,7 +1093,7 @@ add: game
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self games add: game.! !
 
@@ -1107,7 +1113,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -1128,7 +1134,7 @@ allCurrentHeadCoaches
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachNames := OrderedCollection new.
     fileStream := File pathNameReadOnly: 'Data/currentHeadCoaches-copy.txt'.
@@ -1160,7 +1166,7 @@ allDivisionSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamSeasons := self allTeamSeasons.
     divisionSeasons := NFLDivisionSeason allDivisionSeasonsFromTeamSeasons: teamSeasons.
@@ -1182,7 +1188,7 @@ allDivisionSeasonsFor: aYear
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self allDivisionSeasons select: [:divisionSeason | divisionSeason season = aYear].! !
 
@@ -1203,7 +1209,7 @@ allGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     fileStream := File pathNameReadOnly: 'Data/nfl-copy.csv'.
     id := 1.
@@ -1233,7 +1239,7 @@ allTeamSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamInGames := self allTeamsInGames.
     teamSeasons := NFLTeamSeason allSeasonsFromGames: teamInGames.
@@ -1256,7 +1262,7 @@ allTeamsInGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "extracts all TeamInGame objects with allGames"
     temp := OrderedCollection new.
@@ -1281,7 +1287,7 @@ coaches
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^coaches ifNil: [coaches := OrderedCollection new].! !
 
@@ -1299,7 +1305,7 @@ coaches: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coaches := aValue! !
 
@@ -1320,7 +1326,7 @@ coachStatsFromGames: allGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachesByName := Dictionary new.
     allGames do: [:game |
@@ -1350,7 +1356,7 @@ games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games ifNil: [games := OrderedCollection new].! !
 
@@ -1370,7 +1376,7 @@ games: aCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     games := aCollection! !
 
@@ -1388,7 +1394,7 @@ teams
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teams! !
 
@@ -1406,7 +1412,7 @@ teams: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teams := aValue! !
 
@@ -1427,7 +1433,7 @@ allDivisionSeasonsFromTeamSeasons: allTeamSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     grouped := Dictionary new.
     allTeamSeasons do: [:ts |
@@ -1458,7 +1464,7 @@ fromTeamSeasons: teamSeasons conferenceDivision: aDivision season: aSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     filteredTeamSeasons := teamSeasons select: [:ts |
         ts conferenceDivision = aDivision and: [ts season = aSeason]].
@@ -1484,7 +1490,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -1492,46 +1498,6 @@ includeClass
 
 !NFLDivisionSeason methods !
    
-atsNonDivisionPaRecord
-
-	"ATS Points allowed (PA) to opponent team that is outside their division"
-    #CodeTrackerBlock.  "Last Modified  10:51:19 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^teamSeasons inject: 0 into: [:sum :ts | sum + ts atsNonDivisionPaRecord].! !
-
-
-
-!NFLDivisionSeason methods !
-
-atsNonDivisionPfRecord
-
-	"ATS Points for (PF) a team when playing against another team outside their division"
-    #CodeTrackerBlock.  "Last Modified  10:50:49 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^teamSeasons inject: 0 into: [:sum :ts | sum + ts atsNonDivisionPfRecord].! !
-
-
-
-!NFLDivisionSeason methods !
-
 atsPointsAllowed
 
 		"Points allowed"
@@ -1544,7 +1510,7 @@ atsPointsAllowed
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts atsPointsAllowed].! !
 
@@ -1564,7 +1530,7 @@ atsPointsFor
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts atsPointsFor].! !
 
@@ -1585,7 +1551,7 @@ bestResult
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     maximum := 0.
     teamSeasons do: [:aTeamSeason |
@@ -1617,7 +1583,7 @@ conferenceDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^conferenceDivision! !
 
@@ -1635,7 +1601,7 @@ conferenceDivision: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     conferenceDivision := aValue! !
 
@@ -1656,7 +1622,7 @@ conferenceDivisionName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     code := self conferenceDivision asUppercase.
     conferenceMap := Dictionary new.
@@ -1689,7 +1655,7 @@ divisionAndOpponentTeamsIn: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     divTeam := self divisionTeamInGame: aGame.
     divTeam isNil
@@ -1718,7 +1684,7 @@ divisionTeamInGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(aGame homeTeam conferenceDivision = self conferenceDivision)
         ifTrue:[aGame homeTeam]
@@ -1743,7 +1709,7 @@ losses
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts lossesNotInDivision]! !
 
@@ -1763,7 +1729,7 @@ netRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self nonDivisionPfRecord - self nonDivisionPaRecord).! !
 
@@ -1783,7 +1749,7 @@ nonDivisionPaRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts nonDivisionPaRecord].! !
 
@@ -1803,7 +1769,7 @@ nonDivisionPfRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts nonDivisionPfRecord].! !
 
@@ -1823,7 +1789,7 @@ numberOfPlayoffTeams
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(teamSeasons select: [:aTeamSeason | aTeamSeason madePlayoffs]) size.! !
 
@@ -1843,7 +1809,7 @@ numberOfTeamsInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(teamSeasons select: [:teamSeason | teamSeason conferenceDivision = self conferenceDivision]) size.! !
 
@@ -1863,7 +1829,7 @@ pointsAllowed
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts pointsAllowed].! !
 
@@ -1883,7 +1849,7 @@ pointsFor
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts pointsFor].! !
 
@@ -1901,7 +1867,7 @@ season
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^season! !
 
@@ -1919,7 +1885,7 @@ season: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     season := aValue! !
 
@@ -1939,7 +1905,7 @@ sortedByWinPct
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeasons asSortedCollection: [:a :b | a winningPercentage > b winningPercentage]! !
 
@@ -1959,7 +1925,7 @@ strengthTotal
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:total :team | total + team strengthPoints]! !
 
@@ -1979,7 +1945,7 @@ teamSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamSeasons ifNil: [teamSeasons := OrderedCollection new].
     ^teamSeasons! !
@@ -1998,7 +1964,7 @@ teamSeasons: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamSeasons := aValue! !
 
@@ -2018,7 +1984,7 @@ ties
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts tiesNotInDivision]! !
 
@@ -2039,7 +2005,7 @@ winningPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #CodeTrackerBlock. "Last Modified	14:47:44 07/07/25"
     #?. "Type"
@@ -2071,7 +2037,7 @@ wins
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasons inject: 0 into: [:sum :ts | sum + ts winsNotInDivision]! !
 
@@ -2091,7 +2057,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -2112,7 +2078,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -2132,7 +2098,7 @@ allDivisionSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^allDivisionSeasons ifNil: [allDivisionSeasons := OrderedCollection new].! !
 
@@ -2150,7 +2116,7 @@ allDivisionSeasons: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     allDivisionSeasons := aValue! !
 
@@ -2174,7 +2140,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -2315,7 +2281,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     self populateDivisionSeasonsList: 'divisionSeasonsList'.
@@ -2341,7 +2307,7 @@ populateDivisionSeasonsList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     divisionSeasonsList := NFLDivisionSeason allDivisionSeasonsFromTeamSeasons: (
         NFLTeamSeason allSeasonsFromGames: (NFLDatabase new allTeamsInGames)).
@@ -2365,7 +2331,7 @@ populateDivisionSeasonsList: aPaneName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     divisionSeasonsList := NFLDivisionSeason allDivisionSeasonsFromTeamSeasons: (
         NFLTeamSeason allSeasonsFromGames: (NFLDatabase new allTeamsInGames)).
@@ -2390,7 +2356,7 @@ showTeamSeasonUI
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedDivision := (self paneNamed: 'divisionSeasonsList') selectedItem.
     divisionTeamSeasons := selectedDivision teamSeasons.
@@ -2410,7 +2376,7 @@ views
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^views! !
 
@@ -2428,7 +2394,7 @@ views: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     views := aValue! !
 
@@ -2448,7 +2414,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -2469,7 +2435,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -2493,7 +2459,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / (SysFont width roundTo: 2).
@@ -2562,8 +2528,208 @@ createViews
 
 
 
-!NFLGame class methods !
+!NFLFranchise class methods !
+  
+includeClass
+
+		"This method informs CodeTracker what tracks this class belongs to."
+    #CodeTrackerBlock.  "Last Modified  15:15:18 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^true! !
+
+
+
+!NFLFranchise methods !
+
+abbrev
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^abbrev! !
+
+
+
+!NFLFranchise methods !
+
+abbrev: aValue
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    abbrev := aValue! !
+
+
+
+!NFLFranchise methods !
    
+allFranchises
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^allFranchises! !
+
+
+
+!NFLFranchise methods !
+  
+allFranchises: aValue
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    allFranchises := aValue! !
+
+
+
+!NFLFranchise methods !
+ 
+asATSRedirectWrapper
+    #CodeTrackerBlock.  "Last Modified  15:16:29 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ! !
+
+
+
+!NFLFranchise methods !
+   
+names
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^names! !
+
+
+
+!NFLFranchise methods !
+  
+names: aValue
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    names := aValue! !
+
+
+
+!NFLFranchise methods !
+ 
+printOn ":"
+    #CodeTrackerBlock.  "Last Modified  15:17:42 07/17/25"
+    #LabWare. "Owner"
+    #?. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #?. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ! !
+
+
+
+!NFLFranchise methods !
+
+teamSeasons
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    ^teamSeasons! !
+
+
+
+!NFLFranchise methods !
+  
+teamSeasons: aValue
+    #CodeTrackerBlock.  "Last Modified  15:16:59 07/17/25"
+    #LabWare. "Owner"
+    #LIMS. "Type"
+    #?. "Project"
+    #Nfl. "Module"
+    #?. "Unit"
+    #SS5. "RevisedBy"
+    #NotReviewed. "ReviewedBy"
+    #None. "LabTrackId"
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
+
+    teamSeasons := aValue! !
+
+
+
+!NFLGame class methods !
+
 fromString: aString id: anId 
 
 					 "converts csv data into instances of aGame"
@@ -2577,7 +2743,7 @@ fromString: aString id: anId
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     var := aString asArrayOfSubstringsDelimitedBy: Character tab.
     aGame := self new.
@@ -2635,7 +2801,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -2655,7 +2821,7 @@ atsWinner
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self vegasLine isNil
         ifTrue:[^nil].
@@ -2690,7 +2856,7 @@ date
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^date! !
 
@@ -2708,7 +2874,7 @@ date: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     date := aValue! !
 
@@ -2728,7 +2894,7 @@ dayOfWeek
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self date dayName! !
 
@@ -2746,7 +2912,7 @@ gameType
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^gameType! !
 
@@ -2764,7 +2930,7 @@ gameType: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     gameType := aValue! !
 
@@ -2782,7 +2948,7 @@ homeTeam
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^homeTeam! !
 
@@ -2800,7 +2966,7 @@ homeTeam: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     homeTeam := aValue! !
 
@@ -2820,7 +2986,7 @@ homeTeamFinalScoreATS
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self homeTeamWasFavorite
         ifTrue:[self homeTeam totalPoints + (self vegasLine)]
@@ -2840,7 +3006,7 @@ homeTeamWasFavorite
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^homeTeamWasFavorite! !
 
@@ -2860,7 +3026,7 @@ homeTeamWasFavorite: aBoolean
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     homeTeamWasFavorite := aBoolean! !
 
@@ -2878,7 +3044,7 @@ id
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^id! !
 
@@ -2896,7 +3062,7 @@ id: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     id := aValue! !
 
@@ -2916,7 +3082,7 @@ isConferenceChampionship
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self gameType = 'C'.! !
 
@@ -2936,7 +3102,7 @@ isDivisionPlayoff
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self gameType = 'D'.! !
 
@@ -2956,7 +3122,7 @@ isFirstGameOfSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self week = 1.! !
 
@@ -2976,7 +3142,7 @@ isPlayoff
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self isRegularSeason not! !
 
@@ -2996,7 +3162,7 @@ isRegularSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self gameType = 'R'.! !
 
@@ -3016,7 +3182,7 @@ isSameDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^homeTeam conferenceDivision = visitorTeam conferenceDivision.! !
 
@@ -3036,7 +3202,7 @@ isSuperbowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self gameType = 'S'.! !
 
@@ -3056,7 +3222,7 @@ isWildCard
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self gameType = 'W'.! !
 
@@ -3077,7 +3243,7 @@ lastDigitOfScore
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     homeDigit := self homeTeam totalPoints \\ 10. "get the last digit of home team's score with modulus"
     visitorDigit := self visitorTeam totalPoints \\ 10. "get the last digit of visitor team's score with modulus"
@@ -3101,7 +3267,7 @@ marginOfVictory
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self homeTeam totalPoints - visitorTeam totalPoints) abs.! !
 
@@ -3119,7 +3285,7 @@ overtime
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^overtime! !
 
@@ -3137,7 +3303,7 @@ overtime: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     overtime := aValue! !
 
@@ -3155,7 +3321,7 @@ overUnder
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^overUnder! !
 
@@ -3173,7 +3339,7 @@ overUnder: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     overUnder := aValue! !
 
@@ -3194,7 +3360,7 @@ overUnderResult
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     overUnder isNil
         ifTrue:[^nil].
@@ -3219,7 +3385,7 @@ roof
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^roof! !
 
@@ -3237,7 +3403,7 @@ roof: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     roof := aValue! !
 
@@ -3255,7 +3421,7 @@ season
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^season! !
 
@@ -3273,7 +3439,7 @@ season: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     season := aValue! !
 
@@ -3291,7 +3457,7 @@ startTime
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^startTime! !
 
@@ -3309,7 +3475,7 @@ startTime: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     startTime := aValue! !
 
@@ -3330,7 +3496,7 @@ summary
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := self visitorTeam.
     home := self homeTeam.
@@ -3352,7 +3518,7 @@ surface
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^surface! !
 
@@ -3370,7 +3536,7 @@ surface: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     surface := aValue! !
 
@@ -3388,7 +3554,7 @@ temperature
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^temperature! !
 
@@ -3406,7 +3572,7 @@ temperature: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     temperature := aValue! !
 
@@ -3426,7 +3592,7 @@ totalPoints
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self homeTeam totalPoints + self visitorTeam totalPoints).! !
 
@@ -3446,7 +3612,7 @@ vegasFavorite
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^homeTeamWasFavorite
         ifTrue:[homeTeam]
@@ -3466,7 +3632,7 @@ vegasLine
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^vegasLine! !
 
@@ -3484,7 +3650,7 @@ vegasLine: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     vegasLine := aValue! !
 
@@ -3504,7 +3670,7 @@ vegasUnderdog
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^homeTeamWasFavorite
         ifTrue:[visitorTeam]
@@ -3524,7 +3690,7 @@ venue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^venue! !
 
@@ -3542,7 +3708,7 @@ venue: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     venue := aValue! !
 
@@ -3560,7 +3726,7 @@ visitorTeam
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^visitorTeam! !
 
@@ -3578,7 +3744,7 @@ visitorTeam: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitorTeam := aValue! !
 
@@ -3598,7 +3764,7 @@ visitorTeamFinalScoreATS
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self homeTeamWasFavorite
         ifTrue:[self visitorTeam totalPoints]
@@ -3618,7 +3784,7 @@ week
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^week! !
 
@@ -3636,7 +3802,7 @@ week: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     week := aValue! !
 
@@ -3657,7 +3823,7 @@ winningTeam
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := self visitorTeam.
     home := self homeTeam.
@@ -3683,7 +3849,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -3703,7 +3869,7 @@ atsLossCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game |
         | team atsWinner|team := (game homeTeam coach = name)
@@ -3728,7 +3894,7 @@ atsTieCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game | game atsWinner isNil]) size.! !
 
@@ -3748,7 +3914,7 @@ atsWinCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game |
         | team atsWinner|team := (game homeTeam coach = name)
@@ -3774,7 +3940,7 @@ atsWinPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     total := games size.
     total = 0
@@ -3797,7 +3963,7 @@ games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games! !
 
@@ -3817,7 +3983,7 @@ games: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     games := aValue! !
 
@@ -3837,7 +4003,7 @@ lossCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game |
         | coachTeam|coachTeam := (game homeTeam coach = name)
@@ -3861,7 +4027,7 @@ name
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^name! !
 
@@ -3881,7 +4047,7 @@ name: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     name := aValue! !
 
@@ -3901,7 +4067,7 @@ tieCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game |
         | coachTeam|coachTeam := (game homeTeam coach = name)
@@ -3925,7 +4091,7 @@ winCount
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(games select: [:game |
         | coachTeam|coachTeam := (game homeTeam coach = name)
@@ -3950,7 +4116,7 @@ winPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     total := games size.
     total = 0
@@ -3973,7 +4139,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -3994,7 +4160,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -4015,7 +4181,7 @@ applyCurrentFilters
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     filteredCoaches := self filteredCoachStatsListFor: (latestFilterBlock ifNil: [[:game | true]]).
     (self paneNamed: 'currentHCOnly') value
@@ -4042,7 +4208,7 @@ ATSButtonClicked
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self sortByATSPercentage.! !
 
@@ -4062,7 +4228,7 @@ coachStatsList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^coachStatsList ifNil: [OrderedCollection new].! !
 
@@ -4080,7 +4246,7 @@ coachStatsList: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachStatsList := aValue! !
 
@@ -4103,7 +4269,7 @@ createMenus: aPane
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     aPane menuWindow
@@ -4141,7 +4307,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -4366,7 +4532,7 @@ currentHCOnlyChecked
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self applyCurrentFilters.
     self updateCoachListDisplay.! !
@@ -4387,7 +4553,7 @@ database
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     database isNil
         ifTrue:[database := NFLDatabase new].
@@ -4407,7 +4573,7 @@ database: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     database := aValue! !
 
@@ -4427,7 +4593,7 @@ displayedCoachStatsList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^displayedCoachStatsList! !
 
@@ -4450,7 +4616,7 @@ When you want to restore the full list, you reset this variable to the original 
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     displayedCoachStatsList := aCollection! !
 
@@ -4471,7 +4637,7 @@ filterAllGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | true].
     self applyCurrentFilters.
@@ -4495,7 +4661,7 @@ filterConferenceChampionship
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isConferenceChampionship].
     self applyCurrentFilters.
@@ -4519,7 +4685,7 @@ filterDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isDivisionPlayoff].
     self applyCurrentFilters.
@@ -4542,7 +4708,7 @@ filteredCoachStatsListFor: aBlock
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self coachStatsList collect: [:stats |
         | filteredGames newCoach|filteredGames := stats games select: aBlock.
@@ -4568,7 +4734,7 @@ filterFirstGameOfSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isFirstGameOfSeason].
     self applyCurrentFilters.
@@ -4592,7 +4758,7 @@ filterPlayoff
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isPlayoff].
     self applyCurrentFilters.
@@ -4616,7 +4782,7 @@ filterRegularSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isRegularSeason].
     self applyCurrentFilters.
@@ -4640,7 +4806,7 @@ filterSuperBowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isSuperbowl].
     self applyCurrentFilters.
@@ -4664,7 +4830,7 @@ filterWildCard
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:game | game isWildCard].
     self applyCurrentFilters.
@@ -4687,7 +4853,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     self populateCoachList.
@@ -4708,7 +4874,7 @@ latestFilterBlock
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^latestFilterBlock! !
 
@@ -4726,7 +4892,7 @@ latestFilterBlock: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := aValue! !
 
@@ -4746,7 +4912,7 @@ populateCoachList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachStatsList := self database coachStatsFromGames: (self database allGames).
     (self paneNamed: 'coachList') contents: coachStatsList.! !
@@ -4768,7 +4934,7 @@ searchCoach
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     inputText := (self paneNamed: 'searchCoach') value.
     filtered := self coachStatsList select: [:coach |
@@ -4793,7 +4959,7 @@ showCoachHistory
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ! !
 
@@ -4814,7 +4980,7 @@ showOriginalGamesList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedCoach := (self paneNamed: 'coachList') selectedItem.
     Transcript
@@ -4838,7 +5004,7 @@ sortByATSPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "Sort by ATS win percentage descending, then ATS win count descending."
     displayedCoachStatsList := displayedCoachStatsList asSortedCollection: [:a :b |
@@ -4863,7 +5029,7 @@ sortBySUPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "Sort by win percentage descending, then win count descending."
     displayedCoachStatsList := displayedCoachStatsList asSortedCollection: [:a :b |
@@ -4888,7 +5054,7 @@ SUButtonClicked
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self sortBySUPercentage.! !
 
@@ -4908,7 +5074,7 @@ updateCoachListDisplay
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'coachList') contents: displayedCoachStatsList.! !
 
@@ -4926,7 +5092,7 @@ views
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^views! !
 
@@ -4944,7 +5110,7 @@ views: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     views := aValue! !
 
@@ -4964,7 +5130,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -4985,7 +5151,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -5009,7 +5175,7 @@ addSubpanes
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -5154,7 +5320,7 @@ contents: aDivisionSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamsList := self paneNamed: 'standingsList'.
     divisionNameField := self paneNamed: 'divisionNameField'.
@@ -5181,7 +5347,7 @@ fillDivisionNameFieldWithDisplayName: displayName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     divisionNameField := self paneNamed: 'divisionNameField'.
     divisionNameField contents: displayName.! !
@@ -5203,7 +5369,7 @@ openGamesForSelectedTeam
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "selected teamSeason"
     selectedTeamSeason := (self paneNamed: 'standingsList') selectedItem.
@@ -5230,7 +5396,7 @@ showATS
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^showATS! !
 
@@ -5250,7 +5416,7 @@ showATS: aBoolean
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     showATS := aBoolean! !
 
@@ -5270,7 +5436,7 @@ useDivision: aDivision ats: atsBoolean
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     theTeamSeasons := aDivision teamSeasons.
     atsBoolean
@@ -5296,7 +5462,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -5317,7 +5483,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -5337,7 +5503,7 @@ atsButtonOn
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'wlButton') value: false.
     (self paneNamed: 'atsButton') value: true.
@@ -5363,7 +5529,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -5604,7 +5770,7 @@ divisionColors
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     d := Dictionary new.
     d at: 'NE' put: Color blue.
@@ -5636,7 +5802,7 @@ divisionDictionary
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     d := Dictionary new.
     d at: 'NE' put: 'nfc1'.
@@ -5668,7 +5834,7 @@ divisionDisplayNamesDictionary
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     d := Dictionary new.
     d at: 'NE' put: 'NFC East'.
@@ -5699,7 +5865,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     self populateYearDropdown.
@@ -5722,7 +5888,7 @@ populateDivisionComposites
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self yearSelectionChanged.
     divisionPaneDictionary := self divisionDictionary.
@@ -5758,7 +5924,7 @@ populateYearDropdown
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     allTeamSeasons := NFLDatabase new allTeamSeasons.
 
@@ -5786,7 +5952,7 @@ showATS
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self paneNamed: 'atsButton') value.! !
 
@@ -5806,7 +5972,7 @@ wlButtonOn
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'atsButton') value: false.
     (self paneNamed: 'wlButton') value: true.
@@ -5829,7 +5995,7 @@ yearSelectionChanged
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedYear := (self paneNamed: 'yearDropdown') value.
     selectedYear < 2002
@@ -5860,7 +6026,7 @@ fromFields: teamFields game: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     team := self new.
     team teamName: (teamFields at: 1) asString.
@@ -5890,7 +6056,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -5910,7 +6076,7 @@ atsLost
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self atsTied
         ifTrue:[^false].
@@ -5920,38 +6086,6 @@ atsLost
 
 !NFLTeamInGame methods !
 
-atsMargin
-
-		"Returns the margin by which this team covered or failed the spread in this game, or 0 if no vegas line."
-    | favorite underdog favoriteScore underdogScore adjustedFavoriteScore |
-    #CodeTrackerBlock.  "Last Modified  09:43:45 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    self game vegasLine isNil
-        ifTrue:[^0].
-    favorite := self game vegasFavorite.
-    underdog := self game vegasUnderdog.
-    favoriteScore := favorite totalPoints.
-    underdogScore := underdog totalPoints.
-    adjustedFavoriteScore := favoriteScore + self game vegasLine.
-    (self = favorite)
-        ifTrue:[^adjustedFavoriteScore - underdogScore].
-    (self = underdog)
-        ifTrue:[^underdogScore - adjustedFavoriteScore].
-    ^0! !
-
-
-
-!NFLTeamInGame methods !
- 
 atsTied
 
 	"calls atsWinner from NFLGame to associate that the team tied against the spread"
@@ -5964,7 +6098,7 @@ atsTied
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self game atsWinner isNil and: [self game vegasLine notNil].! !
 
@@ -5984,7 +6118,7 @@ atsWon
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self game atsWinner = self! !
 
@@ -6002,7 +6136,7 @@ coach
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^coach! !
 
@@ -6020,7 +6154,7 @@ coach: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coach := aValue! !
 
@@ -6040,7 +6174,7 @@ conference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self conferenceDivision isNil
         ifTrue:['']
@@ -6060,7 +6194,7 @@ conferenceDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^conferenceDivision! !
 
@@ -6078,7 +6212,7 @@ conferenceDivision: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     conferenceDivision := aValue! !
 
@@ -6098,7 +6232,7 @@ division
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self conferenceDivision isNil
         ifTrue:['']
@@ -6118,7 +6252,7 @@ game
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^game! !
 
@@ -6136,7 +6270,7 @@ game: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     game := aValue! !
 
@@ -6156,7 +6290,7 @@ isAway
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self = self game visitorTeam! !
 
@@ -6176,7 +6310,7 @@ isHome
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self = self game homeTeam! !
 
@@ -6196,7 +6330,7 @@ isOutsideConference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self conference ~= self opponent conference.! !
 
@@ -6216,7 +6350,7 @@ isOutsideDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self division ~= self opponent division.! !
 
@@ -6236,7 +6370,7 @@ isWithinConference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self conference = self opponent conference.! !
 
@@ -6256,7 +6390,7 @@ isWithinDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self division = self opponent division.! !
 
@@ -6276,7 +6410,7 @@ lost
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self game winningTeam notNil and: [self game winningTeam ~= self]! !
 
@@ -6296,7 +6430,7 @@ opponent
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self = game homeTeam)
         ifTrue:[self game visitorTeam]
@@ -6316,7 +6450,7 @@ overtime
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^overtime! !
 
@@ -6334,7 +6468,7 @@ overtime: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     overtime := aValue! !
 
@@ -6355,7 +6489,7 @@ printOn: aStream
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     summaryExtra := self game summary , ', W' , (self game week asString) , ', ' , (
         self game season asString).
@@ -6375,7 +6509,7 @@ q1
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^q1! !
 
@@ -6393,7 +6527,7 @@ q1: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     q1 := aValue! !
 
@@ -6411,7 +6545,7 @@ q2
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^q2! !
 
@@ -6429,7 +6563,7 @@ q2: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     q2 := aValue! !
 
@@ -6447,7 +6581,7 @@ q3
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^q3! !
 
@@ -6465,7 +6599,7 @@ q3: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     q3 := aValue! !
 
@@ -6483,7 +6617,7 @@ q4
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^q4! !
 
@@ -6501,7 +6635,7 @@ q4: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     q4 := aValue! !
 
@@ -6519,7 +6653,7 @@ teamName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamName! !
 
@@ -6537,7 +6671,7 @@ teamName: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamName := aValue! !
 
@@ -6557,7 +6691,7 @@ teamSummary
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamName , ' ' , (self totalPoints asString)! !
 
@@ -6577,7 +6711,7 @@ tied
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self game winningTeam isNil.! !
 
@@ -6597,7 +6731,7 @@ totalPoints
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(q1 + q2 + q3 + q4 + overtime).! !
 
@@ -6617,7 +6751,7 @@ won
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self game winningTeam = self.! !
 
@@ -6638,7 +6772,7 @@ allSeasonsFromGames: teamInGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "For every NFLTeamInGame (tig): b a key as an array: [teamName, season]. Store all games for that team/season in an OrderedCollection in the dictionary under that key."
     groupedTeams := Dictionary new.
@@ -6687,7 +6821,7 @@ fromTeamInGames: teamInGames teamName: aTeamName season: aSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     summary := self new.
     summary teamName: aTeamName.
@@ -6716,7 +6850,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -6736,7 +6870,7 @@ allGamesNotInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:gT | gT game isSameDivision not]! !
 
@@ -6757,7 +6891,7 @@ atsBuildResultsCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     results := OrderedCollection new.
     self regularSeasonGames do: [:game |
@@ -6785,7 +6919,7 @@ atsConfRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self atsRecordStringForGames: self gamesInConference! !
 
@@ -6805,7 +6939,7 @@ atsDivRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self atsRecordStringForGames: self gamesInDivision! !
 
@@ -6825,7 +6959,7 @@ atsIcRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self atsRecordStringForGames: self gamesOutsideConference! !
 
@@ -6845,7 +6979,7 @@ atsLosses
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self regularSeasonGames select: [:game | game atsLost]) size.! !
 
@@ -6853,106 +6987,6 @@ atsLosses
 
 !NFLTeamSeason methods !
   
-atsNonDivisionPaRecord
-
-	"total points allowed (PA) to opponent team when against opponent outsde their division ATS"
-    #CodeTrackerBlock.  "Last Modified  10:40:05 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^self allGamesNotInDivision inject: 0 into: [:total :tig | total + tig opponent atsMargin].! !
-
-
-
-!NFLTeamSeason methods !
-
-atsNonDivisionPfRecord
-
-	"total points for (PF) team when against opponent outsde their division ATS"
-    #CodeTrackerBlock.  "Last Modified  10:40:48 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^self allGamesNotInDivision inject: 0 into: [:total :tig | total + tig atsMargin].! !
-
-
-
-!NFLTeamSeason methods !
- 
-atsPointDifferential
-
-"ats diff "
-    #CodeTrackerBlock.  "Last Modified  09:54:22 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^(self atsPointsFor - self atsPointsAllowed)! !
-
-
-
-!NFLTeamSeason methods !
-   
-atsPointsAllowed
-
-		  "total points allowed (PA) opponent team (that is within their division)"
-    #CodeTrackerBlock.  "Last Modified  09:46:44 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^self regularSeasonGames inject: 0 into: [:total :tig | total + tig opponent atsMargin]! !
-
-
-
-!NFLTeamSeason methods !
-  
-atsPointsFor
-
-	"total points scored (PF) current team (that is within their division"
-    #CodeTrackerBlock.  "Last Modified  09:45:54 07/16/25"
-    #LabWare. "Owner"
-    #?. "Type"
-    #?. "Project"
-    #Nfl. "Module"
-    #?. "Unit"
-    #SS5. "RevisedBy"
-    #NotReviewed. "ReviewedBy"
-    #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
-
-    ^self regularSeasonGames inject: 0 into: [:total :tig | total + tig atsMargin]! !
-
-
-
-!NFLTeamSeason methods !
- 
 atsRecordStringForGames: aCollection 
 
 		"gets ATS wins-losses-ties for any collection of games"
@@ -6966,7 +7000,7 @@ atsRecordStringForGames: aCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     wins := (aCollection select: [:tig | tig atsWon]) size.
     losses := (aCollection select: [:tig | tig atsLost]) size.
@@ -6993,7 +7027,7 @@ atsStreak
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     results := self atsBuildResultsCollection.
     results isEmpty
@@ -7024,7 +7058,7 @@ atsTies
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self regularSeasonGames select: [:game | game atsTied]) size.! !
 
@@ -7045,7 +7079,7 @@ atsWinningPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     atsWins := self atsWins.
     atsTies := self atsTies.
@@ -7070,7 +7104,7 @@ atsWins
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self regularSeasonGames select: [:game | game atsWon]) size.! !
 
@@ -7090,7 +7124,7 @@ awayRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self recordStringForGames: self gamesAway! !
 
@@ -7111,7 +7145,7 @@ buildResultsCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     results := OrderedCollection new.
     self regularSeasonGames do: [:game |
@@ -7139,7 +7173,7 @@ conference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games first conference! !
 
@@ -7159,7 +7193,7 @@ conferenceDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games first conferenceDivision.! !
 
@@ -7179,7 +7213,7 @@ confRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self recordStringForGames: self gamesInConference! !
 
@@ -7200,7 +7234,7 @@ diffGRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     gameCount := self games size.
     gameCount = 0
@@ -7224,7 +7258,7 @@ displayCoachName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachName := self seasonHeadCoach.
     self wasCoachFiredBeforeSeasonEnd
@@ -7251,7 +7285,7 @@ division
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games first division.! !
 
@@ -7271,7 +7305,7 @@ divRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self recordStringForGames: self gamesInDivision! !
 
@@ -7289,7 +7323,7 @@ games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games! !
 
@@ -7307,7 +7341,7 @@ games: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     games := aValue! !
 
@@ -7327,7 +7361,7 @@ gamesAway
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:tig | tig isAway]! !
 
@@ -7347,7 +7381,7 @@ gamesHome
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:tig | tig isHome]! !
 
@@ -7367,7 +7401,7 @@ gamesInConference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:tig | tig isWithinConference]! !
 
@@ -7387,7 +7421,7 @@ gamesInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:tig | tig isWithinDivision]! !
 
@@ -7408,7 +7442,7 @@ gamesMissedByHeadCoach: coachName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     coachGames := self games select: [:tig | tig coach = coachName].
     totalGames := self games size.
@@ -7430,7 +7464,7 @@ gamesOutsideConference
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames select: [:tig | tig isOutsideConference]! !
 
@@ -7450,7 +7484,7 @@ hadByeNameIndicator
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self hadFirstRoundBye
         ifTrue:[^'*' , self teamName]
@@ -7473,7 +7507,7 @@ hadFirstRoundBye
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     playoffGames := self playoffGames.
     playoffGames isEmpty
@@ -7499,7 +7533,7 @@ homeRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self recordStringForGames: self gamesHome! !
 
@@ -7519,7 +7553,7 @@ icRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self recordStringForGames: self gamesOutsideConference! !
 
@@ -7541,7 +7575,7 @@ isBetterThan: anotherTeamSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     percentSelf := self winningPercentage.
     percentOther := anotherTeamSeason winningPercentage.
@@ -7581,7 +7615,7 @@ isBetterThan: anotherTeamSeason atsStandings: atsStatus
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     percentSelf := atsStatus
         ifTrue:[self atsWinningPercentage]
@@ -7621,7 +7655,7 @@ isDivisionWinner
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self madePlayoffs and: [self lostWC not]! !
 
@@ -7641,7 +7675,7 @@ isNonPlayoff
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self missedPlayoffs! !
 
@@ -7661,7 +7695,7 @@ isWildCard
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self madePlayoffs and: [self lostWC]! !
 
@@ -7681,7 +7715,7 @@ lastGameHeadCoach
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self games isEmpty
         ifTrue:[nil]
@@ -7703,7 +7737,7 @@ lastGameOfSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self playoffGames isNil or: [self playoffGames isEmpty])
         ifTrue:[
@@ -7729,7 +7763,7 @@ from the selection is what we want to analyze to see if a team won/lost any play
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self playoffGames isEmpty
         ifTrue:[nil]
@@ -7751,7 +7785,7 @@ losses
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self regularSeasonGames select: [:tig | tig lost]) size! !
 
@@ -7771,7 +7805,7 @@ lossesNotInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self allGamesNotInDivision select: [:gT | gT lost]) size! !
 
@@ -7792,7 +7826,7 @@ lostConferenceChampionship
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastGame := self lastPlayoffGame.
     lastGame isNil
@@ -7816,7 +7850,7 @@ lostDiv
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastGame := self lastPlayoffGame.
     lastGame isNil
@@ -7840,7 +7874,7 @@ lostSuperBowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastGame := self lastPlayoffGame.
     lastGame isNil
@@ -7864,7 +7898,7 @@ lostWC
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastGame := self lastPlayoffGame.
     lastGame isNil
@@ -7887,7 +7921,7 @@ madePlayoffs
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self playoffGames isEmpty) not! !
 
@@ -7907,7 +7941,7 @@ missedPlayoffs
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self playoffGames isEmpty.! !
 
@@ -7927,7 +7961,7 @@ myTeamInGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(aGame homeTeam teamName = self teamName)
         ifTrue:[aGame homeTeam]
@@ -7947,7 +7981,7 @@ nextSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^nextSeason! !
 
@@ -7965,7 +7999,7 @@ nextSeason: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     nextSeason := aValue! !
 
@@ -7985,7 +8019,7 @@ nextSeasonHeadCoach
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self nextSeason isNil
         ifTrue:[nil]
@@ -8007,7 +8041,7 @@ nonDivisionPaRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self allGamesNotInDivision inject: 0 into: [:total :tig | total + tig opponent totalPoints].! !
 
@@ -8027,7 +8061,7 @@ nonDivisionPfRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self allGamesNotInDivision inject: 0 into: [:total :tig | total + tig totalPoints].! !
 
@@ -8047,7 +8081,7 @@ opponentTeamInGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(aGame homeTeam teamName = self teamName)
         ifTrue:[aGame visitorTeam]
@@ -8070,7 +8104,7 @@ pagRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     gameCount := self games size.
     gameCount = 0
@@ -8094,7 +8128,7 @@ pfgRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     gameCount := self games size.
     gameCount = 0
@@ -8117,7 +8151,7 @@ playoffGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games select: [:tig | tig game isPlayoff]! !
 
@@ -8137,7 +8171,7 @@ pointDifferential
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self pointsFor - self pointsAllowed)! !
 
@@ -8157,7 +8191,7 @@ pointsAllowed
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames inject: 0 into: [:total :tig | total + tig opponent totalPoints]! !
 
@@ -8177,7 +8211,7 @@ pointsFor
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self regularSeasonGames inject: 0 into: [:total :tig | total + tig totalPoints]! !
 
@@ -8198,7 +8232,7 @@ recordStringForGames: gamesCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     wins := (gamesCollection select: [:tig | tig won]) size.
     losses := (gamesCollection select: [:tig | tig lost]) size.
@@ -8224,7 +8258,7 @@ regularSeasonGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games select: [:tig | tig game isRegularSeason]! !
 
@@ -8242,7 +8276,7 @@ season
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^season! !
 
@@ -8260,7 +8294,7 @@ season: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     season := aValue! !
 
@@ -8280,7 +8314,7 @@ seasonHeadCoach
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self games isEmpty
         ifTrue:[nil]
@@ -8302,7 +8336,7 @@ seasonResult
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self wonSuperBowl
         ifTrue:[^'Won Super Bowl'].
@@ -8334,7 +8368,7 @@ seasonResultColor
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     result := self seasonResult.
     result = 'Won Super Bowl'
@@ -8367,7 +8401,7 @@ streak
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     results := self buildResultsCollection.
     results isEmpty
@@ -8398,7 +8432,7 @@ strengthPoints
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self wonSuperBowl
         ifTrue:[^5].
@@ -8428,7 +8462,7 @@ teamName
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamName! !
 
@@ -8446,7 +8480,7 @@ teamName: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamName := aValue! !
 
@@ -8466,7 +8500,7 @@ ties
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self regularSeasonGames select: [:tig | tig tied]) size! !
 
@@ -8486,7 +8520,7 @@ tiesNotInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self allGamesNotInDivision select: [:gT | gT tied]) size! !
 
@@ -8506,7 +8540,7 @@ uniqueGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self games collect: [:aTeamInGame | aTeamInGame game]) asSet asOrderedCollection.! !
 
@@ -8529,7 +8563,7 @@ wasCoachFiredAfterSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     nextCoach := self nextSeasonHeadCoach.
     nextCoach isNil
@@ -8559,7 +8593,7 @@ wasCoachFiredBeforeSeasonEnd
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self seasonHeadCoach ~= self lastGameHeadCoach! !
 
@@ -8580,7 +8614,7 @@ winningPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     wins := self wins.
     ties := self ties.
@@ -8605,7 +8639,7 @@ wins
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "tig --> teamInGame"
     ^(self regularSeasonGames select: [:game | game won]) size.! !
@@ -8626,7 +8660,7 @@ winsNotInDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self allGamesNotInDivision select: [:gT | gT won]) size! !
 
@@ -8647,7 +8681,7 @@ wonSuperBowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastGame := self lastPlayoffGame.
     lastGame isNil
@@ -8670,7 +8704,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -8691,7 +8725,7 @@ on: aTeamSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ts := self new.
     ts teamSeason: aTeamSeason.
@@ -8711,7 +8745,7 @@ confRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsConfRecord.! !
 
@@ -8729,7 +8763,7 @@ divRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsDivRecord.! !
 
@@ -8749,7 +8783,7 @@ doesNotUnderstand: aMessage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     aMessage receiver: self teamSeason.
     ^aMessage perform.
@@ -8770,7 +8804,7 @@ icRecord
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsIcRecord.! !
 
@@ -8788,7 +8822,7 @@ losses
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsLosses.! !
 
@@ -8806,7 +8840,7 @@ pointsFor
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsPointsFor! !
 
@@ -8824,7 +8858,7 @@ streak
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsStreak! !
 
@@ -8842,7 +8876,7 @@ teamSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeason! !
 
@@ -8860,7 +8894,7 @@ teamSeason: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamSeason := aValue! !
 
@@ -8878,7 +8912,7 @@ ties
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsTies.! !
 
@@ -8896,7 +8930,7 @@ winningPercentage
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsWinningPercentage.! !
 
@@ -8914,7 +8948,7 @@ wins
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self teamSeason atsWins.! !
 
@@ -8934,7 +8968,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -8955,7 +8989,7 @@ openOn: aTeamSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     inst := self new.
     inst teamSeasonToShowOnOpen: aTeamSeason.
@@ -8979,7 +9013,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -8999,7 +9033,7 @@ allTeamSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^allTeamSeasons ifNil: [allTeamSeasons := OrderedCollection new].! !
 
@@ -9019,7 +9053,7 @@ allTeamSeasons: aCollection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     allTeamSeasons := aCollection.! !
 
@@ -9039,7 +9073,7 @@ applyCurrentFilters
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     filteredTeamSeasons := self allTeamSeasons select: latestFilterBlock.! !
 
@@ -9062,7 +9096,7 @@ createMenus: aPane
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     aPane menuWindow
@@ -9099,7 +9133,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -9277,7 +9311,7 @@ filterAllTeams
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | true].
     self applyCurrentFilters.
@@ -9297,7 +9331,7 @@ filteredTeamSeasons
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^filteredTeamSeasons! !
 
@@ -9315,7 +9349,7 @@ filteredTeamSeasons: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     filteredTeamSeasons := aValue! !
 
@@ -9335,7 +9369,7 @@ filterLostConferenceChampionship
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season lostConferenceChampionship].
     self applyCurrentFilters.
@@ -9357,7 +9391,7 @@ filterLostDiv
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season lostDiv].
     self applyCurrentFilters.
@@ -9379,7 +9413,7 @@ filterLostSuperBowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season lostSuperBowl].
     self applyCurrentFilters.
@@ -9401,7 +9435,7 @@ filterLostWC
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season lostWC].
     self applyCurrentFilters.
@@ -9423,7 +9457,7 @@ filterMissedPlayoffs
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season missedPlayoffs].
     self applyCurrentFilters.
@@ -9445,7 +9479,7 @@ filterWonSuperBowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := [:season | season wonSuperBowl].
     self applyCurrentFilters.
@@ -9467,7 +9501,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     self populateTeamSeasonsList.
@@ -9492,7 +9526,7 @@ latestFilterBlock
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^latestFilterBlock! !
 
@@ -9510,7 +9544,7 @@ latestFilterBlock: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     latestFilterBlock := aValue! !
 
@@ -9531,7 +9565,7 @@ populateTeamSeasonsList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "take all the team-in-game records stored in the database, group them into seasons for each team"
     teamSeasonsList := teamSeasonToShowOnOpen ifNil: [
@@ -9556,7 +9590,7 @@ showFranchiseList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedFranchise := (self paneNamed: 'teamSeasonsList') selectedItem.
     franchiseSeasons := NFLTeamSeason allSeasonsFromGames: selectedFranchise games.
@@ -9579,7 +9613,7 @@ showOriginalGamesList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedSeason := (self paneNamed: 'teamSeasonsList') selectedItem.
     NFLUI openOn: selectedSeason uniqueGames.! !
@@ -9598,7 +9632,7 @@ teamSeasonToShowOnOpen
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^teamSeasonToShowOnOpen! !
 
@@ -9616,7 +9650,7 @@ teamSeasonToShowOnOpen: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     teamSeasonToShowOnOpen := aValue! !
 
@@ -9636,7 +9670,7 @@ updateTeamSeasonListDisplay
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'teamSeasonsList') contents: filteredTeamSeasons.! !
 
@@ -9654,7 +9688,7 @@ views
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^views! !
 
@@ -9672,7 +9706,7 @@ views: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     views := aValue! !
 
@@ -9692,7 +9726,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -9713,7 +9747,7 @@ openOn: aListOfGames
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     inst := self new.
     inst gamesToShowOnOpen: aListOfGames.
@@ -9737,7 +9771,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -9757,7 +9791,7 @@ composite
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^self paneNamed: 'composite'! !
 
@@ -9780,7 +9814,7 @@ createMenus: aPane
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     aPane menuWindow
@@ -9819,7 +9853,7 @@ createViews
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -9943,7 +9977,7 @@ db
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^db! !
 
@@ -9961,7 +9995,7 @@ db: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     db := aValue! !
 
@@ -9981,7 +10015,7 @@ filteredGamesForMenuSelection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection isNil
         ifTrue:[^games].
@@ -10015,7 +10049,7 @@ games
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^games! !
 
@@ -10033,7 +10067,7 @@ games: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     games := aValue! !
 
@@ -10051,7 +10085,7 @@ gamesToShowOnOpen
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^gamesToShowOnOpen! !
 
@@ -10069,7 +10103,7 @@ gamesToShowOnOpen: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     gamesToShowOnOpen := aValue! !
 
@@ -10089,7 +10123,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "initialize window"
     super initWindow.
@@ -10118,7 +10152,7 @@ lastFilterString
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^lastFilterString! !
 
@@ -10136,7 +10170,7 @@ lastFilterString: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     lastFilterString := aValue! !
 
@@ -10154,7 +10188,7 @@ menuSelection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^menuSelection! !
 
@@ -10174,7 +10208,7 @@ menuSelection: aString
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := aString! !
 
@@ -10194,7 +10228,7 @@ open
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super open.
     self populateGamesList.! !
@@ -10216,7 +10250,7 @@ populateGamesList
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     pane := self paneNamed: 'gamesList'.
     allGames := NFLDatabase new allGames.
@@ -10241,7 +10275,7 @@ selectAll
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'All'.
     self updateGamesListOnMenuSelection.
@@ -10263,7 +10297,7 @@ selectConferenceChampionship
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Conference Championship'.
     self updateGamesListOnMenuSelection.
@@ -10285,7 +10319,7 @@ selectDivision
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Division'.
     self updateGamesListOnMenuSelection.
@@ -10307,7 +10341,7 @@ selectedItem
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^(self paneNamed: 'gamesList') selectedItem.! !
 
@@ -10328,7 +10362,7 @@ selectFilter
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "calls TextPromtDialog class when clicking 'Select Filter' from menubar"
     filterString := TextPromptDialog title: 'Custom Game Filter' prompt: 'Enter a game filter block:' default: (
@@ -10360,7 +10394,7 @@ selectPlayoffs
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Playoffs'.
     self updateGamesListOnMenuSelection.
@@ -10382,7 +10416,7 @@ selectRegularSeason
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Regular Season'.
     self updateGamesListOnMenuSelection.
@@ -10404,7 +10438,7 @@ selectSuperbowl
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Super Bowl'.
     self updateGamesListOnMenuSelection.
@@ -10426,7 +10460,7 @@ selectWildCard
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     menuSelection := 'Wild Card'.
     self updateGamesListOnMenuSelection.
@@ -10449,7 +10483,7 @@ updateGameDetailsOnSelection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     selectedRow := (self paneNamed: 'gamesList') selectedItem.
     selectedRow ifNotNil: [
@@ -10473,7 +10507,7 @@ updateGamesListOnMenuSelection
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     pane := self paneNamed: 'gamesList'.
     filteredGames := self filteredGamesForMenuSelection.
@@ -10503,7 +10537,7 @@ views
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^views! !
 
@@ -10521,7 +10555,7 @@ views: aValue
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #None. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     views := aValue! !
 
@@ -10541,7 +10575,7 @@ includeClass
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^true! !
 
@@ -10562,7 +10596,7 @@ wbBasicVersion
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     ^3.11! !
 
@@ -10586,7 +10620,7 @@ addSubpanes
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     #generated.
     xDU := (SysFont width + 1 roundTo: 2) / 4.
@@ -11463,7 +11497,7 @@ clearGameDetailsFields
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'visitorEntry') contents: ''.
     (self paneNamed: 'homeEntry') contents: ''.
@@ -11511,7 +11545,7 @@ displayCoachesFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11535,7 +11569,7 @@ displayConferenceDivisionFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11559,7 +11593,7 @@ displayFinalScoresFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11582,7 +11616,7 @@ displayGameDetails: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     self displayTeamNamesFrom: aGame.
     self displayQuarterScoresFrom: aGame.
@@ -11615,7 +11649,7 @@ displayHalftimeScoresFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11639,7 +11673,7 @@ displayOvertimeScoresFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11672,7 +11706,7 @@ displayQuarterScoresFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11702,7 +11736,7 @@ displayTeamNamesFrom: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11725,7 +11759,7 @@ initWindow
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     super initWindow.
     self clearGameDetailsFields.! !
@@ -11746,7 +11780,7 @@ selectedGame: selectedGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (self paneNamed: 'composite') selecetdGame: selectedGame.! !
 
@@ -11767,7 +11801,7 @@ updateATSCheckForGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     "check ATS box based on higher number after adding vegasLine value"
     atsWinner := aGame atsWinner.
@@ -11795,7 +11829,7 @@ updateLineFieldsForGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     (aGame vegasLine isNil or: [aGame overUnder isNil])
         ifTrue:[
@@ -11830,7 +11864,7 @@ updateOUCheckForGame: aGame
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.
@@ -11867,7 +11901,7 @@ If winner is nil, it's a tie, so uncheck both. If winner equals visitor, check v
     #SS5. "RevisedBy"
     #NotReviewed. "ReviewedBy"
     #?. "LabTrackId"
-    #CodeTrackerBlockEnd.  "Copyright Â© 2025 LabWare Inc."
+    #CodeTrackerBlockEnd.  "Copyright © 2025 LabWare Inc."
 
     visitor := aGame visitorTeam.
     home := aGame homeTeam.

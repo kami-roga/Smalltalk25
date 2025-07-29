@@ -8,11 +8,21 @@ Filing out Module "Nfl" ...
       NFLBoxPoolGrid
       NFLBoxPoolGridRow
       NFLDatabase
+      NFLDivisionSeason
+      NFLFranchise
       NFLGame
+      NFLHeadCoach
       NFLTeamInGame
+      NFLTeamSeason
+      NFLTeamSeasonATSRedirectWrapper
       NFLBoxPoolUI
+      NFLDivisionSeasonsUI
+      NFLHeadCoachUI
+      NFLStandingsUI
+      NFLTeamSeasonsUI
       NFLUI
       NFLFilterDialog
+      NFLStandingsComposite
       NFLUIComposite2
    Filing out NFLBoxPoolAnalyzer class>>includeClass
    Filing out NFLBoxPoolAnalyzer>>analyzeGames:
@@ -59,14 +69,72 @@ Filing out Module "Nfl" ...
    Filing out NFLBoxPoolUI>>wonRows:
    Filing out NFLDatabase class>>add:
    Filing out NFLDatabase class>>includeClass
+   Filing out NFLDatabase>>allCurrentHeadCoaches
+   Filing out NFLDatabase>>allDivisionSeasons
+   Filing out NFLDatabase>>allDivisionSeasonsFor:
    Filing out NFLDatabase>>allGames
+   Filing out NFLDatabase>>allTeamSeasons
+   Filing out NFLDatabase>>allTeamsInGames
+   Filing out NFLDatabase>>coaches
+   Filing out NFLDatabase>>coaches:
+   Filing out NFLDatabase>>coachStatsFromGames:
    Filing out NFLDatabase>>games
    Filing out NFLDatabase>>games:
    Filing out NFLDatabase>>teams
    Filing out NFLDatabase>>teams:
+   Filing out NFLDivisionSeason class>>allDivisionSeasonsFromTeamSeasons:
+   Filing out NFLDivisionSeason class>>fromTeamSeasons:conferenceDivision:season:
+   Filing out NFLDivisionSeason class>>includeClass
+   Filing out NFLDivisionSeason>>atsPointsAllowed
+   Filing out NFLDivisionSeason>>atsPointsFor
+   Filing out NFLDivisionSeason>>bestResult
+   Filing out NFLDivisionSeason>>conferenceDivision
+   Filing out NFLDivisionSeason>>conferenceDivision:
+   Filing out NFLDivisionSeason>>conferenceDivisionName
+   Filing out NFLDivisionSeason>>divisionAndOpponentTeamsIn:
+   Filing out NFLDivisionSeason>>divisionTeamInGame:
+   Filing out NFLDivisionSeason>>losses
+   Filing out NFLDivisionSeason>>netRecord
+   Filing out NFLDivisionSeason>>nonDivisionPaRecord
+   Filing out NFLDivisionSeason>>nonDivisionPfRecord
+   Filing out NFLDivisionSeason>>numberOfPlayoffTeams
+   Filing out NFLDivisionSeason>>numberOfTeamsInDivision
+   Filing out NFLDivisionSeason>>pointsAllowed
+   Filing out NFLDivisionSeason>>pointsFor
+   Filing out NFLDivisionSeason>>season
+   Filing out NFLDivisionSeason>>season:
+   Filing out NFLDivisionSeason>>sortedByWinPct
+   Filing out NFLDivisionSeason>>strengthTotal
+   Filing out NFLDivisionSeason>>teamSeasons
+   Filing out NFLDivisionSeason>>teamSeasons:
+   Filing out NFLDivisionSeason>>ties
+   Filing out NFLDivisionSeason>>winningPercentage
+   Filing out NFLDivisionSeason>>wins
+   Filing out NFLDivisionSeasonsUI class>>includeClass
+   Filing out NFLDivisionSeasonsUI class>>wbBasicVersion
+   Filing out NFLDivisionSeasonsUI>>allDivisionSeasons
+   Filing out NFLDivisionSeasonsUI>>allDivisionSeasons:
+   Filing out NFLDivisionSeasonsUI>>createViews
+   Filing out NFLDivisionSeasonsUI>>initWindow
+   Filing out NFLDivisionSeasonsUI>>populateDivisionSeasonsList
+   Filing out NFLDivisionSeasonsUI>>populateDivisionSeasonsList:
+   Filing out NFLDivisionSeasonsUI>>showTeamSeasonUI
+   Filing out NFLDivisionSeasonsUI>>views
+   Filing out NFLDivisionSeasonsUI>>views:
    Filing out NFLFilterDialog class>>includeClass
    Filing out NFLFilterDialog class>>wbBasicVersion
    Filing out NFLFilterDialog>>createViews
+   Filing out NFLFranchise class>>includeClass
+   Filing out NFLFranchise>>abbrev
+   Filing out NFLFranchise>>abbrev:
+   Filing out NFLFranchise>>allFranchises
+   Filing out NFLFranchise>>allFranchises:
+   Filing out NFLFranchise>>asATSRedirectWrapper
+   Filing out NFLFranchise>>names
+   Filing out NFLFranchise>>names:
+   Filing out NFLFranchise>>printOn
+   Filing out NFLFranchise>>teamSeasons
+   Filing out NFLFranchise>>teamSeasons:
    Filing out NFLGame class>>fromString:id:
    Filing out NFLGame class>>includeClass
    Filing out NFLGame>>atsWinner
@@ -77,14 +145,17 @@ Filing out Module "Nfl" ...
    Filing out NFLGame>>gameType:
    Filing out NFLGame>>homeTeam
    Filing out NFLGame>>homeTeam:
+   Filing out NFLGame>>homeTeamFinalScoreATS
    Filing out NFLGame>>homeTeamWasFavorite
    Filing out NFLGame>>homeTeamWasFavorite:
    Filing out NFLGame>>id
    Filing out NFLGame>>id:
    Filing out NFLGame>>isConferenceChampionship
    Filing out NFLGame>>isDivisionPlayoff
+   Filing out NFLGame>>isFirstGameOfSeason
    Filing out NFLGame>>isPlayoff
    Filing out NFLGame>>isRegularSeason
+   Filing out NFLGame>>isSameDivision
    Filing out NFLGame>>isSuperbowl
    Filing out NFLGame>>isWildCard
    Filing out NFLGame>>lastDigitOfScore
@@ -114,19 +185,104 @@ Filing out Module "Nfl" ...
    Filing out NFLGame>>venue:
    Filing out NFLGame>>visitorTeam
    Filing out NFLGame>>visitorTeam:
+   Filing out NFLGame>>visitorTeamFinalScoreATS
    Filing out NFLGame>>week
    Filing out NFLGame>>week:
-   Filing out NFLGame>>winner
-   Filing out NFLTeamInGame class>>fromFields:
+   Filing out NFLGame>>winningTeam
+   Filing out NFLHeadCoach class>>includeClass
+   Filing out NFLHeadCoach>>atsLossCount
+   Filing out NFLHeadCoach>>atsTieCount
+   Filing out NFLHeadCoach>>atsWinCount
+   Filing out NFLHeadCoach>>atsWinPercentage
+   Filing out NFLHeadCoach>>games
+   Filing out NFLHeadCoach>>games:
+   Filing out NFLHeadCoach>>lossCount
+   Filing out NFLHeadCoach>>name
+   Filing out NFLHeadCoach>>name:
+   Filing out NFLHeadCoach>>tieCount
+   Filing out NFLHeadCoach>>winCount
+   Filing out NFLHeadCoach>>winPercentage
+   Filing out NFLHeadCoachUI class>>includeClass
+   Filing out NFLHeadCoachUI class>>wbBasicVersion
+   Filing out NFLHeadCoachUI>>applyCurrentFilters
+   Filing out NFLHeadCoachUI>>ATSButtonClicked
+   Filing out NFLHeadCoachUI>>coachStatsList
+   Filing out NFLHeadCoachUI>>coachStatsList:
+   Filing out NFLHeadCoachUI>>createMenus:
+   Filing out NFLHeadCoachUI>>createViews
+   Filing out NFLHeadCoachUI>>currentHCOnlyChecked
+   Filing out NFLHeadCoachUI>>database
+   Filing out NFLHeadCoachUI>>database:
+   Filing out NFLHeadCoachUI>>displayedCoachStatsList
+   Filing out NFLHeadCoachUI>>displayedCoachStatsList:
+   Filing out NFLHeadCoachUI>>filterAllGames
+   Filing out NFLHeadCoachUI>>filterConferenceChampionship
+   Filing out NFLHeadCoachUI>>filterDivision
+   Filing out NFLHeadCoachUI>>filteredCoachStatsListFor:
+   Filing out NFLHeadCoachUI>>filterFirstGameOfSeason
+   Filing out NFLHeadCoachUI>>filterPlayoff
+   Filing out NFLHeadCoachUI>>filterRegularSeason
+   Filing out NFLHeadCoachUI>>filterSuperBowl
+   Filing out NFLHeadCoachUI>>filterWildCard
+   Filing out NFLHeadCoachUI>>initWindow
+   Filing out NFLHeadCoachUI>>latestFilterBlock
+   Filing out NFLHeadCoachUI>>latestFilterBlock:
+   Filing out NFLHeadCoachUI>>populateCoachList
+   Filing out NFLHeadCoachUI>>searchCoach
+   Filing out NFLHeadCoachUI>>showCoachHistory
+   Filing out NFLHeadCoachUI>>showOriginalGamesList
+   Filing out NFLHeadCoachUI>>sortByATSPercentage
+   Filing out NFLHeadCoachUI>>sortBySUPercentage
+   Filing out NFLHeadCoachUI>>SUButtonClicked
+   Filing out NFLHeadCoachUI>>updateCoachListDisplay
+   Filing out NFLHeadCoachUI>>views
+   Filing out NFLHeadCoachUI>>views:
+   Filing out NFLStandingsComposite class>>includeClass
+   Filing out NFLStandingsComposite class>>wbBasicVersion
+   Filing out NFLStandingsComposite>>addSubpanes
+   Filing out NFLStandingsComposite>>contents:
+   Filing out NFLStandingsComposite>>fillDivisionNameFieldWithDisplayName:
+   Filing out NFLStandingsComposite>>openGamesForSelectedTeam
+   Filing out NFLStandingsComposite>>showATS
+   Filing out NFLStandingsComposite>>showATS:
+   Filing out NFLStandingsComposite>>useDivision:ats:
+   Filing out NFLStandingsUI class>>includeClass
+   Filing out NFLStandingsUI class>>wbBasicVersion
+   Filing out NFLStandingsUI>>atsButtonOn
+   Filing out NFLStandingsUI>>createViews
+   Filing out NFLStandingsUI>>divisionColors
+   Filing out NFLStandingsUI>>divisionDictionary
+   Filing out NFLStandingsUI>>divisionDisplayNamesDictionary
+   Filing out NFLStandingsUI>>initWindow
+   Filing out NFLStandingsUI>>populateDivisionComposites
+   Filing out NFLStandingsUI>>populateYearDropdown
+   Filing out NFLStandingsUI>>showATS
+   Filing out NFLStandingsUI>>wlButtonOn
+   Filing out NFLStandingsUI>>yearSelectionChanged
+   Filing out NFLTeamInGame class>>fromFields:game:
    Filing out NFLTeamInGame class>>includeClass
-   Filing out NFLTeamInGame class>>winnerBetween:and:
+   Filing out NFLTeamInGame>>atsLost
+   Filing out NFLTeamInGame>>atsTied
+   Filing out NFLTeamInGame>>atsWon
    Filing out NFLTeamInGame>>coach
    Filing out NFLTeamInGame>>coach:
+   Filing out NFLTeamInGame>>conference
    Filing out NFLTeamInGame>>conferenceDivision
    Filing out NFLTeamInGame>>conferenceDivision:
-   Filing out NFLTeamInGame>>isWinner:
+   Filing out NFLTeamInGame>>division
+   Filing out NFLTeamInGame>>game
+   Filing out NFLTeamInGame>>game:
+   Filing out NFLTeamInGame>>isAway
+   Filing out NFLTeamInGame>>isHome
+   Filing out NFLTeamInGame>>isOutsideConference
+   Filing out NFLTeamInGame>>isOutsideDivision
+   Filing out NFLTeamInGame>>isWithinConference
+   Filing out NFLTeamInGame>>isWithinDivision
+   Filing out NFLTeamInGame>>lost
+   Filing out NFLTeamInGame>>opponent
    Filing out NFLTeamInGame>>overtime
    Filing out NFLTeamInGame>>overtime:
+   Filing out NFLTeamInGame>>printOn:
    Filing out NFLTeamInGame>>q1
    Filing out NFLTeamInGame>>q1:
    Filing out NFLTeamInGame>>q2
@@ -138,8 +294,137 @@ Filing out Module "Nfl" ...
    Filing out NFLTeamInGame>>teamName
    Filing out NFLTeamInGame>>teamName:
    Filing out NFLTeamInGame>>teamSummary
+   Filing out NFLTeamInGame>>tied
    Filing out NFLTeamInGame>>totalPoints
+   Filing out NFLTeamInGame>>won
+   Filing out NFLTeamSeason class>>allSeasonsFromGames:
+   Filing out NFLTeamSeason class>>fromTeamInGames:teamName:season:
+   Filing out NFLTeamSeason class>>includeClass
+   Filing out NFLTeamSeason>>allGamesNotInDivision
+   Filing out NFLTeamSeason>>atsBuildResultsCollection
+   Filing out NFLTeamSeason>>atsConfRecord
+   Filing out NFLTeamSeason>>atsDivRecord
+   Filing out NFLTeamSeason>>atsIcRecord
+   Filing out NFLTeamSeason>>atsLosses
+   Filing out NFLTeamSeason>>atsRecordStringForGames:
+   Filing out NFLTeamSeason>>atsStreak
+   Filing out NFLTeamSeason>>atsTies
+   Filing out NFLTeamSeason>>atsWinningPercentage
+   Filing out NFLTeamSeason>>atsWins
+   Filing out NFLTeamSeason>>awayRecord
+   Filing out NFLTeamSeason>>buildResultsCollection
+   Filing out NFLTeamSeason>>conference
+   Filing out NFLTeamSeason>>conferenceDivision
+   Filing out NFLTeamSeason>>confRecord
+   Filing out NFLTeamSeason>>diffGRecord
+   Filing out NFLTeamSeason>>displayCoachName
+   Filing out NFLTeamSeason>>division
+   Filing out NFLTeamSeason>>divRecord
+   Filing out NFLTeamSeason>>games
+   Filing out NFLTeamSeason>>games:
+   Filing out NFLTeamSeason>>gamesAway
+   Filing out NFLTeamSeason>>gamesHome
+   Filing out NFLTeamSeason>>gamesInConference
+   Filing out NFLTeamSeason>>gamesInDivision
+   Filing out NFLTeamSeason>>gamesMissedByHeadCoach:
+   Filing out NFLTeamSeason>>gamesOutsideConference
+   Filing out NFLTeamSeason>>hadByeNameIndicator
+   Filing out NFLTeamSeason>>hadFirstRoundBye
+   Filing out NFLTeamSeason>>homeRecord
+   Filing out NFLTeamSeason>>icRecord
+   Filing out NFLTeamSeason>>isBetterThan:
+   Filing out NFLTeamSeason>>isBetterThan:atsStandings:
+   Filing out NFLTeamSeason>>isDivisionWinner
+   Filing out NFLTeamSeason>>isNonPlayoff
+   Filing out NFLTeamSeason>>isWildCard
+   Filing out NFLTeamSeason>>lastGameHeadCoach
+   Filing out NFLTeamSeason>>lastGameOfSeason
+   Filing out NFLTeamSeason>>lastPlayoffGame
+   Filing out NFLTeamSeason>>losses
+   Filing out NFLTeamSeason>>lossesNotInDivision
+   Filing out NFLTeamSeason>>lostConferenceChampionship
+   Filing out NFLTeamSeason>>lostDiv
+   Filing out NFLTeamSeason>>lostSuperBowl
+   Filing out NFLTeamSeason>>lostWC
+   Filing out NFLTeamSeason>>madePlayoffs
+   Filing out NFLTeamSeason>>missedPlayoffs
+   Filing out NFLTeamSeason>>myTeamInGame:
+   Filing out NFLTeamSeason>>nextSeason
+   Filing out NFLTeamSeason>>nextSeason:
+   Filing out NFLTeamSeason>>nextSeasonHeadCoach
+   Filing out NFLTeamSeason>>nonDivisionPaRecord
+   Filing out NFLTeamSeason>>nonDivisionPfRecord
+   Filing out NFLTeamSeason>>opponentTeamInGame:
+   Filing out NFLTeamSeason>>pagRecord
+   Filing out NFLTeamSeason>>pfgRecord
+   Filing out NFLTeamSeason>>playoffGames
+   Filing out NFLTeamSeason>>pointDifferential
+   Filing out NFLTeamSeason>>pointsAllowed
+   Filing out NFLTeamSeason>>pointsFor
+   Filing out NFLTeamSeason>>recordStringForGames:
+   Filing out NFLTeamSeason>>regularSeasonGames
+   Filing out NFLTeamSeason>>season
+   Filing out NFLTeamSeason>>season:
+   Filing out NFLTeamSeason>>seasonHeadCoach
+   Filing out NFLTeamSeason>>seasonResult
+   Filing out NFLTeamSeason>>seasonResultColor
+   Filing out NFLTeamSeason>>streak
+   Filing out NFLTeamSeason>>strengthPoints
+   Filing out NFLTeamSeason>>teamName
+   Filing out NFLTeamSeason>>teamName:
+   Filing out NFLTeamSeason>>ties
+   Filing out NFLTeamSeason>>tiesNotInDivision
+   Filing out NFLTeamSeason>>uniqueGames
+   Filing out NFLTeamSeason>>wasCoachFiredAfterSeason
+   Filing out NFLTeamSeason>>wasCoachFiredBeforeSeasonEnd
+   Filing out NFLTeamSeason>>winningPercentage
+   Filing out NFLTeamSeason>>wins
+   Filing out NFLTeamSeason>>winsNotInDivision
+   Filing out NFLTeamSeason>>wonSuperBowl
+   Filing out NFLTeamSeasonATSRedirectWrapper class>>includeClass
+   Filing out NFLTeamSeasonATSRedirectWrapper class>>on:
+   Filing out NFLTeamSeasonATSRedirectWrapper>>confRecord
+   Filing out NFLTeamSeasonATSRedirectWrapper>>divRecord
+   Filing out NFLTeamSeasonATSRedirectWrapper>>doesNotUnderstand:
+   Filing out NFLTeamSeasonATSRedirectWrapper>>icRecord
+   Filing out NFLTeamSeasonATSRedirectWrapper>>losses
+   Filing out NFLTeamSeasonATSRedirectWrapper>>pointsFor
+   Filing out NFLTeamSeasonATSRedirectWrapper>>streak
+   Filing out NFLTeamSeasonATSRedirectWrapper>>teamSeason
+   Filing out NFLTeamSeasonATSRedirectWrapper>>teamSeason:
+   Filing out NFLTeamSeasonATSRedirectWrapper>>ties
+   Filing out NFLTeamSeasonATSRedirectWrapper>>winningPercentage
+   Filing out NFLTeamSeasonATSRedirectWrapper>>wins
+   Filing out NFLTeamSeasonsUI class>>includeClass
+   Filing out NFLTeamSeasonsUI class>>openOn:
+   Filing out NFLTeamSeasonsUI class>>wbBasicVersion
+   Filing out NFLTeamSeasonsUI>>allTeamSeasons
+   Filing out NFLTeamSeasonsUI>>allTeamSeasons:
+   Filing out NFLTeamSeasonsUI>>applyCurrentFilters
+   Filing out NFLTeamSeasonsUI>>createMenus:
+   Filing out NFLTeamSeasonsUI>>createViews
+   Filing out NFLTeamSeasonsUI>>filterAllTeams
+   Filing out NFLTeamSeasonsUI>>filteredTeamSeasons
+   Filing out NFLTeamSeasonsUI>>filteredTeamSeasons:
+   Filing out NFLTeamSeasonsUI>>filterLostConferenceChampionship
+   Filing out NFLTeamSeasonsUI>>filterLostDiv
+   Filing out NFLTeamSeasonsUI>>filterLostSuperBowl
+   Filing out NFLTeamSeasonsUI>>filterLostWC
+   Filing out NFLTeamSeasonsUI>>filterMissedPlayoffs
+   Filing out NFLTeamSeasonsUI>>filterWonSuperBowl
+   Filing out NFLTeamSeasonsUI>>initWindow
+   Filing out NFLTeamSeasonsUI>>latestFilterBlock
+   Filing out NFLTeamSeasonsUI>>latestFilterBlock:
+   Filing out NFLTeamSeasonsUI>>populateTeamSeasonsList
+   Filing out NFLTeamSeasonsUI>>showFranchiseList
+   Filing out NFLTeamSeasonsUI>>showOriginalGamesList
+   Filing out NFLTeamSeasonsUI>>teamSeasonToShowOnOpen
+   Filing out NFLTeamSeasonsUI>>teamSeasonToShowOnOpen:
+   Filing out NFLTeamSeasonsUI>>updateTeamSeasonListDisplay
+   Filing out NFLTeamSeasonsUI>>views
+   Filing out NFLTeamSeasonsUI>>views:
    Filing out NFLUI class>>includeClass
+   Filing out NFLUI class>>openOn:
    Filing out NFLUI class>>wbBasicVersion
    Filing out NFLUI>>composite
    Filing out NFLUI>>createMenus:
@@ -149,6 +434,8 @@ Filing out Module "Nfl" ...
    Filing out NFLUI>>filteredGamesForMenuSelection
    Filing out NFLUI>>games
    Filing out NFLUI>>games:
+   Filing out NFLUI>>gamesToShowOnOpen
+   Filing out NFLUI>>gamesToShowOnOpen:
    Filing out NFLUI>>initWindow
    Filing out NFLUI>>lastFilterString
    Filing out NFLUI>>lastFilterString:
@@ -199,38 +486,51 @@ Creating NLS file...
 
 Generating "test plan" file...
 Walking objects...
+   adding NFLTeamSeasonsUI ...
+   imported: GlobalExternal ( 'ViewManager' ) ...
+   adding NFLGame ...
+   adding NFLTeamInGame ...
    imported: AssocExternal ( 'SysFont' ) ...
+   imported: AssocExternal ( 'EntryField' ) ...
    imported: AssocExternal ( 'CPColumnarListBox' ) ...
    imported: AssocExternal ( 'Font' ) ...
-   imported: AssocExternal ( 'Color' ) ...
    imported: AssocExternal ( 'LayoutFrame' ) ...
-   imported: AssocExternal ( 'CPCLBField' ) ...
-   adding NFLBoxPoolUI ...
-   imported: GlobalExternal ( 'ViewManager' ) ...
    imported: AssocExternal ( 'Menu' ) ...
-   adding NFLGame ...
-   adding NFLFilterDialog ...
-   imported: GlobalExternal ( 'WindowDialog' ) ...
+   imported: AssocExternal ( 'CPCLBField' ) ...
    adding NFLUIComposite2 ...
    imported: GlobalExternal ( 'CompositePane' ) ...
-   adding NFLTeamInGame ...
-   adding NFLBoxPoolGridRow ...
+   imported: AssocExternal ( 'Color' ) ...
+   imported: AssocExternal ( 'RGBColor' ) ...
+   adding NFLTeamSeasonATSRedirectWrapper ...
+   adding NFLBoxPoolAnalyzer ...
+   adding NFLDatabase ...
+   adding NFLDivisionSeason ...
+   adding NFLBoxPoolUI ...
+   adding NFLFilterDialog ...
+   imported: GlobalExternal ( 'WindowDialog' ) ...
    imported: AssocExternal ( 'CheckBox' ) ...
-   imported: AssocExternal ( 'EntryField' ) ...
    imported: AssocExternal ( 'EnhancedEntryField' ) ...
    imported: AssocExternal ( 'StaticText' ) ...
+   imported: AssocExternal ( 'RadioButton' ) ...
+   imported: AssocExternal ( 'DropDownList' ) ...
+   adding NFLTeamSeason ...
+   imported: AssocExternal ( 'Transcript' ) ...
+   adding NFLBoxPoolGrid ...
    imported: AssocExternal ( 'ListBox' ) ...
+   imported: AssocExternal ( 'Button' ) ...
+   adding NFLHeadCoachUI ...
    adding NFLUI ...
-   adding NFLDatabase ...
+   adding NFLStandingsComposite ...
+   adding NFLStandingsUI ...
+   adding NFLBoxPoolGridRow ...
+   adding NFLDivisionSeasonsUI ...
+   adding NFLFranchise ...
+   adding NFLHeadCoach ...
    imported: AssocExternal ( 'TextPromptDialog' ) ...
    imported: AssocExternal ( 'MessageBox' ) ...
    imported: AssocExternal ( 'CompilerInterface' ) ...
-   adding NFLBoxPoolGrid ...
-   imported: AssocExternal ( 'DropDownList' ) ...
-   imported: AssocExternal ( 'RGBColor' ) ...
-   adding NFLBoxPoolAnalyzer ...
 Writing file: C:\LabWare-8\SOURCE\!Nfl.sll ...
-.......................   object space written, 748 objects, 39877 bytes
+.......................................   object space written, 1756 objects, 95389 bytes
    writing source code...
 ...done.
 
